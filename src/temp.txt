@@ -1,0 +1,56 @@
+ /*
+TODO ::
+ - modulate the height in waves
+ - branching
+ - figure out starting points
+
+let x, y; // the current position of the turtle
+let triA = 25;
+let triR = 2;
+
+let whereinstring = 0; // where in the L-system are we?
+
+function setup() {
+  createCanvas(1080, 720);
+  background(255);
+  stroke(0, 0, 0, 255);
+  frameRate(2);
+
+  sx = width / 2;
+  sy = height / 2;
+}
+
+function draw() {
+  let x = random(0, 10);
+  if(x > 5) {
+    for(let i = 0; i < 2; ++i) {
+      drawCube(sx, sy);
+      sx += triA + (triA / 4);
+      sy += triA - (triA / 4);
+    }
+  } else {
+    for(let i = 0; i < 2; ++i) {
+      drawCube(sx, sy);
+      sx -= triA + (triA / 3);
+      sy += triA - (triA / 4);
+    }
+  }
+
+}
+
+function drawCube(x, y) {
+  strokeWeight(0);
+
+  // this is the top of the cube
+  fill("#637074");
+  quad(x - triA, y - (triA / triR), x, y - 2 * (triA / triR), x + triA, y - (triA / triR), x, y);
+
+  // this is the left side of the cube
+  fill("#212227");
+  quad(x - triA, y - (triA / triR), x, y, x, y + 2 * (triA / triR), x - triA, y + (triA / triR));
+
+  // this is the right side of the cube
+  fill("#AAB9CF");
+  quad(x + triA, y - (triA / triR), x, y, x, y + 2 * (triA / triR), x + triA, y + (triA / triR));
+}
+*/
