@@ -1,38 +1,10 @@
-# create-svelte
+# Tim's Website Revamp
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+### So for a while, I've thought my website looked a little ragged. It was a little basic and it didn't really provide any challenges in terms of constructing it that made me proud of it, so with some free time on my hand, I've decided to revamp my website in svelte!
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## Technologies
+### The main packages used were:
+ - p5-svelte | for graphics
+ - svelte | as framework
+ - nprogress | as loading bar
+ - tailwindcss | as css framework
