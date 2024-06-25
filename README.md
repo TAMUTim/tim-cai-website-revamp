@@ -10,4 +10,4 @@
  - tailwindcss | as css framework
 
 ## Notes and References
-Of course, while I do wish that this was a completely original creation, I have to give a massive props to the legendary Anthony Fu, at [antfu.me](https://www.antfu.me).
+Based on the Legendary [Anthony Fu](https://github.com/antfu)
