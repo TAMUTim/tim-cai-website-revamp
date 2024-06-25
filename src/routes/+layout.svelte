@@ -1,12 +1,17 @@
 <script lang="ts">
-    import '../styles/main.css'
+    import '$lib/styles/main.css'
     import '@fortawesome/fontawesome-free/css/all.min.css'
     import { browser } from "$app/environment";
     import { navigating } from "$app/stores";
 
     import NProgress from 'nprogress';
 
-    import Dots from '../components/Dots.svelte'
+    import Dots from '$lib/components/Dots.svelte';
+
+    // Assets
+    import GoobImage from '$lib/assets/goob.png';
+    import Resume from '$lib/assets/resume.pdf';
+    import GoobFavicon from '$lib/assets/favicons/favicon.ico';
 
     $: {
         if ($navigating) {
@@ -27,6 +32,10 @@
     let y: number;
 </script>
 
+<svelte:head>
+    <link rel="shortcut icon" href={GoobFavicon} />
+</svelte:head>
+
 <svelte:window bind:scrollY={y} />
 
 {#if browser}
@@ -38,12 +47,14 @@
         <div class="relative flex h-16 items-center justify-between">
             <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <a class="flex flex-shrink-0 items-center" href="/">
-                    <img class="h-10 w-auto" src="public/goob.png" alt="really cool drawing of me">
+                    <img class="h-10 w-auto" src={GoobImage} alt="really cool drawing of me">
                 </a>
             </div>
             <div class="nav-links absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <a class="text-lg font-semibold mr-6" href="/about">About</a>
-                <a class="text-lg font-semibold mr-6" href="/public/resume.pdf">Resume</a>
+                <a class="text-lg font-semibold mr-6" href="/blog">Blog</a>
+                <a class="text-lg font-semibold mr-6" href="/projects">Projects</a>
+                <a class="text-lg font-semibold mr-6" href="/hundred">100</a>
+                <a class="text-lg font-semibold mr-6" href={Resume}>Resume</a>
                 <a class="text-lg" target="_blank" href="https://github.com/TAMUTim">
                     <i class="fa-brands fa-github"></i>
                 </a>
@@ -56,7 +67,7 @@
 
 <button
         title="Scroll to the top"
-        class="fixed right-3 bottom-3 w-10 h-10 rounded-full z-100 print:hidden text-slate-200 {y > 300 ? 'opacity-100' : 'opacity-0'}"
+        class="fixed right-3 bottom-3 w-10 h-10 rounded-full z-100 print:hidden text-slate-200 {y > 10 ? 'opacity-100' : 'opacity-0'}"
         on:click={scrollToTop}
 >
     <i class="fa-solid fa-arrow-up"></i>
@@ -74,7 +85,7 @@
     color: azure;
     text-decoration: none;
     cursor: pointer;
-    transition: opacity 0.2s ease-in;
+    transition: opacity 0.2s ease-in-out;
     opacity: 0.6;
     outline: none;
 }

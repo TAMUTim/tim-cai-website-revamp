@@ -1,3 +1,11 @@
+<svelte:head>
+    <title>{title}</title>
+</svelte:head>
+
+<script>
+    export let title = "Tim Cai";
+</script>
+
 <div class="flex flex-col items-center justify-center font-ibm mt-10">
     <div class="w-1/4 prose" style="--stagger: 1" data-animate>
             <p class="text-3xl text-left font-semibold text-slate-50">Tim Cai</p>
@@ -40,13 +48,13 @@
 
 <style>
     .prose a {
-        color: rgb(248 250 252);
+        color: var(--c-slate-50);
         text-decoration: none;
-        border-bottom: 1px solid #94a3b8;
+        border-bottom: 1px solid var(--c-slate-400);
         transition: border 0.2s ease-in-out;
     }
 
     .prose a:hover {
-        border-bottom: 1px solid rgb(248 250 252);
+        border-bottom: 1px solid var(--c-slate-50);
     }
 </style>

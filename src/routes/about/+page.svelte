@@ -1,1 +1,0 @@
-<h1 class="text-sm text-slate-300">About</h1>

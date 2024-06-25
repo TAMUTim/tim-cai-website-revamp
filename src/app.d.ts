@@ -1,4 +1,4 @@
-import './styles/main.css'
+import '$lib/styles/main.css'
 
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces

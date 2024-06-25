@@ -37,8 +37,10 @@
                 const length = (p5.noise(x / SCALE, y / SCALE, t * 2) + 0.5) * LENGTH;
                 const nx = x + p5.cos(rad) * length;
                 const ny = y + p5.cos(rad) * length;
-                p5.stroke(200, 200, 200, (Math.abs(p5.cos(rad)) * 0.8 + 0.2) * p.opacity * 255);
-                p5.circle(nx, ny - offsetY, 1);
+                const r2 = Math.abs(p5.cos(rad)) * 255;
+                p5.stroke(r2, r2, r2, (Math.abs(p5.cos(rad)) * 0.8 + 0.2) * p.opacity * 255);
+                // p5.stroke(200, 200, 200, (Math.abs(p5.cos(rad)) * 0.8 + 0.2) * p.opacity * 255);
+                p5.circle(nx, ny - offsetY, 2);
             }
         }
 
