@@ -68,8 +68,6 @@
     }
 
     window.addEventListener('resize', () => {
-        console.log("WOW");
-
         w = window.outerWidth;
         h = window.outerHeight;
 
@@ -78,6 +76,6 @@
     });
 </script>
 
-<div class="-z-1 absolute bg-fixed pointer-events-none invert">
+<div class="absolute bg-fixed pointer-events-none invert">
     <P5 {sketch}/>
 </div>
