@@ -33,7 +33,7 @@
     }
 </script>
 
-<div class=" font-ibm mt-10">
+<div class="flex flex-col items-center justify-center font-ibm mt-10">
     <div class="w-1/4 flex flex-row gap-4" style="--stagger: 1" data-animate>
         <a href="/blog" class={currentPath === '/blog' ? 'active' : 'inactive'}>
             <p class="text-4xl font-semibold text-slate-50">Blog</p>
