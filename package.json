@@ -18,6 +18,8 @@
 		"autoprefixer": "^10.4.19",
 		"mdsvex": "^0.11.2",
 		"postcss": "^8.4.38",
+		"prettier": "^3.3.2",
+		"prettier-plugin-svelte": "^3.2.5",
 		"svelte": "^4.2.7",
 		"svelte-check": "^3.6.0",
 		"tailwindcss": "^3.4.4",
@@ -29,6 +31,7 @@
 	"dependencies": {
 		"@fortawesome/fontawesome-free": "^6.5.2",
 		"nprogress": "^0.2.0",
-		"p5-svelte": "^3.1.2"
+		"p5-svelte": "^3.1.2",
+		"shiki": "^1.10.0"
 	}
 }

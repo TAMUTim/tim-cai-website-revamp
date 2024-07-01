@@ -2,7 +2,7 @@ import type { PageLoad } from './$types';
 import { error } from '@sveltejs/kit';
 
 export const load: PageLoad = async ({ params }) => {
-    const modules = import.meta.glob('/src/posts/*.md');
+    const modules = import.meta.glob('/src/notes/*.md');
 
     let match: { path?: string; resolver?: App.MdsvexResolver } = {};
     for (const [path, resolver] of Object.entries(modules)) {

@@ -5,6 +5,10 @@ export default {
     extend: {
       fontFamily: {
         ibm: ["IBM Plex Sans", "sans-serif"],
+        nabla: ["Nabla", "sans-serif"],
+      },
+      width: {
+        'content': '40rem'
       }
     },
   },

@@ -9,26 +9,21 @@
 
     const currentPath = $page.url.pathname;
 
-    export let title = "Blog - Tim Cai";
+    export let title = "Notes - Tim Cai";
     export let data: PageData;
 
-    let postsByYear: App.PostYear[] = [
-        {
-            year: new Date().getFullYear(),
-            posts: []
-        }
-    ];
+    let notesByYear: App.NoteYear[] = [];
 
-    for(const post of data.posts) {
-        if(postsByYear[postsByYear.length - 1].year !== new Date(post.date).getFullYear()) {
-            let newYearObj: App.PostYear = {
-                year: new Date(post.date).getFullYear(),
-                posts: [post]
-            }
-
-            postsByYear.push(newYearObj);
+    for(const post of data.notes) {
+        if(notesByYear.length === 0 || (notesByYear[notesByYear.length - 1].topic !== post.topic)) {
+            notesByYear.push(
+                {
+                    topic: post.topic,
+                    notes: [post]
+                }
+            );
         } else {
-            postsByYear[postsByYear.length - 1].posts.push(post);
+            notesByYear[notesByYear.length - 1].notes.push(post);
         }
     }
 </script>
@@ -43,16 +38,16 @@
         </a>
     </div>
 
-    <div class="prose w-content flex flex-col mt-14 gap-16">
-        {#each postsByYear as { year, posts }}
+    <div class="prose w-content flex flex-col mt-14 gap-16" style="--stagger: 2" data-animate>
+        {#each notesByYear as { topic, notes }}
             <div>
-                <p class="text-3xl text-right font-nabla text-orange-400 mb-4">{ year }</p>
+                <p class="text-4xl font-nabla text-right text-cyan-400 mb-4">{ topic }</p>
                 <div class="flex flex-col gap-2">
-                    {#each posts as { title, slug, author, date, published, readTime }}
+                    {#each notes as { title, slug, author, date, published, topic, readTime }}
                         <div class="text-right">
-                            <a href="/blog/{slug}" class="text-xl text-slate-300">
+                            <a href="/notes/{slug}" class="text-xl text-slate-300">
                                 {title}
-                                <span class="ml-3 text-right font-semibold text-xl text-slate-400 mt-2">{getFormattedDate(date)} · {readTime} min</span>
+                                <span class="ml-3 text-right font-semibold text-xl text-slate-400 mt-2">{readTime} min</span>
                             </a>
                         </div>
                     {/each}

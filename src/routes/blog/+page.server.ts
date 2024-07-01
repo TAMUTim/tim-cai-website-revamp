@@ -1,7 +1,7 @@
 import type {PageServerLoad} from "./$types";
 
 export const load: PageServerLoad = async({ url }) => {
-    const module = import.meta.glob('/src/posts/*.svx');
+    const module = import.meta.glob('/src/posts/*.md');
 
     const postPromises = Object.entries(module).map(([path, resolver]) =>
         resolver().then(
