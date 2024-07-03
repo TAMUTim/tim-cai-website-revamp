@@ -50,11 +50,12 @@
                     <img class="h-10 w-auto" src={GoobImage} alt="really cool drawing of me">
                 </a>
             </div>
-            <div class="nav-links absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <div class="nav-links font-nabla absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <a class="text-lg font-semibold mr-6" href="/blog">Blog</a>
+                <a class="text-lg font-semibold mr-6" href="/notes">Notes</a>
                 <a class="text-lg font-semibold mr-6" href="/projects">Projects</a>
                 <a class="text-lg font-semibold mr-6" href="/hundred">100</a>
-                <a class="text-lg font-semibold mr-6" href={Resume}>Resume</a>
+                <a class="text-lg font-semibold mr-6" href={Resume} target="_blank">Resume</a>
                 <a class="text-lg" target="_blank" href="https://github.com/TAMUTim">
                     <i class="fa-brands fa-github"></i>
                 </a>
@@ -74,7 +75,7 @@
 </button>
 
 <div class="flex flex-row items-center justify-center font-ibm">
-    <div class="mt-10 mb-6 w-1/4" style="--stagger: 3" data-animate>
+    <div class="mt-10 mb-6 w-content" style="--stagger: 3" data-animate>
         <span class="text-sm font-semibold text-slate-300">2024-Death CC Tim Cai</span>
         <div class="flex-auto" />
     </div>

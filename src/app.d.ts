@@ -30,6 +30,21 @@ declare global {
 			year: number;
 			posts: BlogPost[];
 		}
+
+		interface Note {
+			title: string;
+			slug: string;
+			author: string;
+			date: string;
+			published: boolean;
+			readTime: number;
+			topic: string;
+		}
+
+		interface NoteYear {
+			topic: string;
+			notes: Note[];
+		}
 	}
 }
 
