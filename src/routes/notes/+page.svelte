@@ -38,10 +38,10 @@
         </a>
     </div>
 
-    <div class="prose w-content flex flex-col mt-14 gap-16" style="--stagger: 2" data-animate>
+    <div class="w-content flex flex-col mt-14 gap-16" style="--stagger: 2" data-animate>
         {#each notesByYear as { topic, notes }}
-            <div>
-                <p class="text-4xl font-nabla text-right text-cyan-400 mb-4">{ topic }</p>
+            <div class="flex flex-col gap-4">
+                <p class="text-4xl font-nabla text-right">{ topic }</p>
                 <div class="flex flex-col gap-2">
                     {#each notes as { title, slug, author, date, published, topic, readTime }}
                         <div class="text-right">
@@ -58,7 +58,7 @@
 </div>
 
 <style>
-    .prose a {
+    a {
         color: rgb(248 250 252);
         text-decoration: none;
         cursor: pointer;
@@ -66,7 +66,7 @@
         opacity: 0.6;
     }
 
-    .prose a:hover {
+    a:hover {
         opacity: 1;
     }
 
@@ -86,6 +86,6 @@
     }
 
     .active:hover {
-        border-bottom: 1px solid var(--c-slate-50);
+        border-bottom: 1px solid var(--c-accent-secondary);
     }
 </style>

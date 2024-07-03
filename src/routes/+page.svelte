@@ -7,7 +7,7 @@
 </script>
 
 <div class="flex flex-col items-center justify-center font-ibm mt-10">
-    <div class="w-content prose" style="--stagger: 1" data-animate>
+    <div class="w-content" style="--stagger: 1" data-animate>
             <p class="text-5xl text-left font-semibold font-nabla text-slate-50">Tim Cai</p>
             <p class="mt-5 text-lg text-left text-slate-300">Howdy! My name is Timothy Cai, how are you?</p>
             <p class="mt-5 text-lg text-left text-slate-300">
@@ -22,7 +22,7 @@
                 I'm also doing a cool thing <a href="/project-summer">here</a>, over the course of 100 days.
             </p>
     </div>
-    <div class="w-content prose" style="--stagger: 2" data-animate>
+    <div class="w-content" style="--stagger: 2" data-animate>
         <hr class="mt-8 mb-8 rounded bg-slate-400 w-14 border-0 h-0.5">
 
         <p class="text-lg text-left text-slate-300">Find me on</p>
@@ -34,7 +34,7 @@
 
         <p class="text-lg text-left text-slate-300">or email me directly at <a href="mailto:timcai.tyc@gmail.com">timcai.tyc@gmail.com</a></p>
     </div>
-    <div class="w-content prose" style="--stagger: 2" data-animate>
+    <div class="w-content" style="--stagger: 2" data-animate>
         <hr class="mt-8 mb-8 rounded bg-slate-400 w-14 border-0 h-0.5">
 
         <p class="text-lg text-left text-slate-300">
@@ -47,14 +47,14 @@
 </div>
 
 <style>
-    .prose a {
+    a {
         color: var(--c-slate-50);
         text-decoration: none;
         border-bottom: 1px solid var(--c-slate-400);
         transition: border 0.2s ease-in-out;
     }
 
-    .prose a:hover {
+    a:hover {
         border-bottom: 1px solid var(--c-slate-50);
     }
 </style>
