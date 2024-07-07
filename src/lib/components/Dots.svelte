@@ -4,7 +4,7 @@
     let body = document.body;
     let html = document.documentElement;
 
-    let w = window.outerWidth;
+    let w = window.innerWidth;
     let h = Math.max(
       body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight
     );
@@ -13,9 +13,9 @@
 
     let canvas: any;
 
-    const SCALE = 200;
+    const SCALE = 300;
     const LENGTH = 12;
-    const SPACING = 16;
+    const SPACING = 20;
 
     const existingPoints = new Set<string>();
     const points: { x: number, y: number, opacity: number }[] = [];
@@ -39,17 +39,17 @@
             for (const p of points) {
                 const { x, y } = p;
                 const rad = getForceOnPoint(x, y, t);
+                const cosRad = p5.cos(rad);
                 const length = (p5.noise(x / SCALE, y / SCALE, t * 2) + 0.5) * LENGTH;
-                const nx = x + p5.cos(rad) * length;
-                const ny = y + p5.cos(rad) * length;
-                const r2 = Math.abs(p5.cos(rad)) * 255;
-                p5.stroke(r2, r2, r2, (Math.abs(p5.cos(rad)) * 0.8 + 0.2) * p.opacity * 255);
-                p5.circle(nx, ny - offsetY, 2);
+                const nx = x + cosRad * length;
+                const ny = y + p5.sin(rad) * length;
+                p5.stroke(200, 200, 200, (Math.abs(cosRad) * 0.8 + 0.2) * p.opacity * 255);
+                p5.circle(nx, ny - offsetY, 1);
             }
         }
 
         function getForceOnPoint(x: number, y: number, z: number) {
-            return (p5.noise(x / SCALE, y / SCALE, z) -0.5) * 2 * p5.TWO_PI;
+            return (p5.noise(x / SCALE, y / SCALE, z) - 0.5) * 2 * p5.TWO_PI;
         }
     }
 

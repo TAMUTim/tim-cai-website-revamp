@@ -84,7 +84,7 @@ want to do the same, but retrieve the markdown file as a Svelte component, which
 ## [p5-svelte](https://p5js.org/)
 You might have noticed the background and how awesome and amazing and wonderful it is. It's not too loud, but looks
 nice while maintaining a somewhat professional, readable website. The code itself was taken from 
-(Anthony Fu)[https://github.com/antfu/antfu.me/blob/main/src/components/ArtDots.vue], with a
+[Anthony Fu](https://github.com/antfu/antfu.me/blob/main/src/components/ArtDots.vue), with a
 couple of very minor adjustments to increase range of motion. The "art" itself is rendered through the 
 [`p5`](https://p5js.org/) package and made easier to work with through 
 [`p5-svelte`](https://github.com/tonyketcham/p5-svelte). It's meant to be a more user-friendly graphics library that 

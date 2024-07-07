@@ -2,7 +2,7 @@
     import '$lib/styles/main.css'
     import '@fortawesome/fontawesome-free/css/all.min.css'
     import { browser } from "$app/environment";
-    import { navigating } from "$app/stores";
+    import { navigating, page } from '$app/stores'
 
     import NProgress from 'nprogress';
 
@@ -30,6 +30,8 @@
     }
 
     let y: number;
+
+    $: renderDots = !($page.url.pathname.includes('blog/') || $page.url.pathname.includes('notes/'));
 </script>
 
 <svelte:head>
@@ -38,7 +40,7 @@
 
 <svelte:window bind:scrollY={y} />
 
-{#if browser}
+{#if browser && renderDots}
     <Dots />
 {/if}
 
