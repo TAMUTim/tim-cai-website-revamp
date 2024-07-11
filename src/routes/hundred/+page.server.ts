@@ -12,9 +12,10 @@ export const load: PageServerLoad = async({ url }) => {
 	);
 
 	const hundredTitles = await Promise.all(hundredPromises);
-	const parsedTitles = hundredTitles.map((hundredTitle, index) =>
-		hundredTitle.title.replace(/_/g, ' ')
-	);
+	const parsedTitles = hundredTitles.map((hundredTitle, index) => ({
+		slugTitle: hundredTitle.title,
+		cleanTitle: hundredTitle.title.replace(/_/g, ' ')
+	}));
 
 	return {
 		titles: parsedTitles

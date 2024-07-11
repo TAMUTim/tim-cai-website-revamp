@@ -10,7 +10,7 @@ export default {
       },
       width: {
         'content': '40rem',
-        'hundred': '55rem'
+        'hundred': '45rem'
       },
       typography: ({ theme }) => ({
         content: {

@@ -3,10 +3,14 @@
     import '@fortawesome/fontawesome-free/css/all.min.css'
     import { browser } from "$app/environment";
     import { navigating, page } from '$app/stores';
-    import animatedSections from '$lib/stores/animatedSections';
+    import { onDestroy } from 'svelte';
 
     import NProgress from 'nprogress';
 
+    // Stores
+    import animatedSections from '$lib/stores/animatedSections';
+
+    // Components
     import Dots from '$lib/components/Dots.svelte';
 
     // Assets
@@ -14,6 +18,11 @@
     import Resume from '$lib/assets/tim_cai_resume.pdf';
     import GoobFavicon from '$lib/assets/favicons/favicon.ico';
 
+    let y: number;
+    let cWidth: string;
+    let numSections = 0;
+
+    $: renderDots = !($page.url.pathname.includes('blog/') || $page.url.pathname.includes('notes/'));
     $: {
         if ($navigating) {
             NProgress.start();
@@ -22,6 +31,18 @@
             NProgress.done();
         }
     }
+    $: {
+        if($page.url.pathname.includes('hundred')) {
+            cWidth = 'hundred';
+        }
+        else {
+            cWidth = 'content';
+        }
+    }
+
+    animatedSections.subscribe((sections) => {
+        numSections = sections;
+    });
 
     function scrollToTop() {
         window.scrollTo({
@@ -29,15 +50,6 @@
             behavior: 'smooth'
         });
     }
-
-    let y: number;
-    let numSections = 0;
-
-    animatedSections.subscribe((sections) => {
-        numSections = sections;
-    })
-
-    $: renderDots = !($page.url.pathname.includes('blog/') || $page.url.pathname.includes('notes/'));
 </script>
 
 <svelte:head>
@@ -84,7 +96,7 @@
 
 {#key $page.url.pathname}
     <div class="flex flex-row items-center justify-center font-ibm">
-        <div class="mt-10 mb-6 w-content" style="--stagger: {numSections + 1}" data-animate>
+        <div class="mt-10 mb-6 w-{cWidth}" style="--stagger: {numSections + 1}" data-animate>
             <span class="text-sm font-semibold text-slate-300">2024-Death CC Tim Cai</span>
             <div class="flex-auto" />
         </div>

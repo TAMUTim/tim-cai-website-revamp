@@ -14,10 +14,10 @@
 </script>
 
 <div class="flex items-center justify-center mt-20">
-    <div class="flex flex-col flex-wrap mt-10 w-content border-2 min-h-[45rem] font-ibmMono" style="--stagger: 1" data-animate>
-        {#each titles as title, i}
-            <a class="text-slate-50 mt-3 ml-3" href="/hundred/{i + 1}">
-                {i}. {title}
+    <div class="flex flex-col flex-wrap mt-10 w-hundred border-2 min-h-[45rem] font-ibmMono" style="--stagger: 1" data-animate>
+        {#each titles as {slugTitle, cleanTitle}, i}
+            <a class="text-slate-50 mt-3 ml-3" href="/hundred/{slugTitle}">
+                {i}. {cleanTitle}
             </a>
         {/each}
     </div>
