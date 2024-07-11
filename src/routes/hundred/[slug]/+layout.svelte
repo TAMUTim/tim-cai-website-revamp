@@ -1,5 +1,7 @@
 <script lang="ts">
+	import animatedSections from '$lib/stores/animatedSections';
 
+	animatedSections.set(2);
 </script>
 
 <div class="flex items-center justify-center mt-20">

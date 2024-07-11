@@ -71,14 +71,31 @@
                 </a>
             </div>
             <div class="nav-links font-nabla absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <a class="text-lg font-semibold mr-6" href="/blog">Blog</a>
-                <a class="text-lg font-semibold mr-6" href="/notes">Notes</a>
-                <a class="text-lg font-semibold mr-6" href="/projects">Projects</a>
-                <a class="text-lg font-semibold mr-6" href="/hundred">100</a>
-                <a class="text-lg font-semibold mr-6" href={Resume} target="_blank">Resume</a>
-                <a class="text-lg" target="_blank" href="https://github.com/TAMUTim">
-                    <i class="fa-brands fa-github"></i>
-                </a>
+                <div>
+                    <a class="text-lg font-semibold mr-6" href="/blog">Blog</a>
+                </div>
+                <div>
+                    <a class="text-lg font-semibold mr-6" href="/notes">Notes</a>
+                </div>
+                <div>
+                    <a class="text-lg font-semibold mr-6" href="/projects">Projects</a>
+                </div>
+                <div>
+                    <a class="text-lg font-semibold mr-6" href="/hundred">100</a>
+                </div>
+                <div>
+                    <a class="text-lg font-semibold mr-6" href={Resume} target="_blank">Resume</a>
+                </div>
+                <div>
+                    <a class="text-lg" target="_blank" href="https://github.com/TAMUTim">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </div>
+                <div>
+                    <a class="text-lg" target="_blank" href="https://www.linkedin.com/in/tim-cai/">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

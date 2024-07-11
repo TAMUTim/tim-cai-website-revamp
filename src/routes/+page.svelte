@@ -12,7 +12,7 @@
 
 <div class="flex flex-col items-center justify-center font-ibm mt-10">
     <div class="w-content" style="--stagger: 1" data-animate>
-            <p class="text-5xl text-left font-semibold font-nabla text-slate-50">Tim Cai</p>
+            <p class="text-5xl text-left font-semibold font-nabla">Tim Cai</p>
             <p class="mt-5 text-lg text-left text-slate-300">Howdy! My name is Timothy Cai, how are you?</p>
             <p class="mt-5 text-lg text-left text-slate-300">
                 I make cool things with cool technologies, sometimes relating to Computer Networking.
@@ -42,7 +42,7 @@
         <hr class="mt-8 mb-8 rounded bg-slate-400 w-14 border-0 h-0.5">
 
         <p class="text-lg text-left text-slate-300">
-            I am always open to new opportunities, if you are interested in offering me a job,
+            I am always open to new opportunities, if you are interested in working with me,
             please contact me at the email above, thank you.
         </p>
     </div>
