@@ -6,9 +6,11 @@ export default {
       fontFamily: {
         ibm: ["IBM Plex Sans", "sans-serif"],
         nabla: ["Nabla", "sans-serif"],
+        ibmMono: ["IBM Plex Mono", "serif"]
       },
       width: {
-        'content': '40rem'
+        'content': '40rem',
+        'hundred': '55rem'
       },
       typography: ({ theme }) => ({
         content: {
