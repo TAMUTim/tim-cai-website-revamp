@@ -5,7 +5,10 @@
 <script lang="ts">
     import { getFormattedDate } from "$lib/utils";
     import { page } from '$app/stores';
-    import type { PageData } from './$types'
+    import type { PageData } from './$types';
+    import animatedSections from '$lib/stores/animatedSections';
+
+    animatedSections.set(3);
 
     const currentPath = $page.url.pathname;
 
@@ -64,7 +67,7 @@
 
 <style>
     a {
-        color: rgb(248 250 252);
+        color: var(--c-slate-50);
         cursor: pointer;
         transition: opacity 0.2s ease-in;
         opacity: 0.6;

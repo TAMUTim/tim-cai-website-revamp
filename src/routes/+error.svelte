@@ -4,6 +4,9 @@
 
 <script>
     export let title = "Error - Tim Cai"
+    import animatedSections from '$lib/stores/animatedSections';
+
+    animatedSections.set(2);
 
     function goBack() {
         history.back();

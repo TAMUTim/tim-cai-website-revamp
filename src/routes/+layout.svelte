@@ -2,7 +2,8 @@
     import '$lib/styles/main.css'
     import '@fortawesome/fontawesome-free/css/all.min.css'
     import { browser } from "$app/environment";
-    import { navigating, page } from '$app/stores'
+    import { navigating, page } from '$app/stores';
+    import animatedSections from '$lib/stores/animatedSections';
 
     import NProgress from 'nprogress';
 
@@ -10,7 +11,7 @@
 
     // Assets
     import GoobImage from '$lib/assets/goob.png';
-    import Resume from '$lib/assets/resume.pdf';
+    import Resume from '$lib/assets/tim_cai_resume.pdf';
     import GoobFavicon from '$lib/assets/favicons/favicon.ico';
 
     $: {
@@ -30,6 +31,11 @@
     }
 
     let y: number;
+    let numSections = 0;
+
+    animatedSections.subscribe((sections) => {
+        numSections = sections;
+    })
 
     $: renderDots = !($page.url.pathname.includes('blog/') || $page.url.pathname.includes('notes/'));
 </script>
@@ -76,16 +82,18 @@
     <i class="fa-solid fa-arrow-up"></i>
 </button>
 
-<div class="flex flex-row items-center justify-center font-ibm">
-    <div class="mt-10 mb-6 w-content" style="--stagger: 3" data-animate>
-        <span class="text-sm font-semibold text-slate-300">2024-Death CC Tim Cai</span>
-        <div class="flex-auto" />
+{#key $page.url.pathname}
+    <div class="flex flex-row items-center justify-center font-ibm">
+        <div class="mt-10 mb-6 w-content" style="--stagger: {numSections + 1}" data-animate>
+            <span class="text-sm font-semibold text-slate-300">2024-Death CC Tim Cai</span>
+            <div class="flex-auto" />
+        </div>
     </div>
-</div>
+{/key}
 
 <style>
 .nav-links a {
-    color: azure;
+    color: var(--c-slate-50);
     text-decoration: none;
     cursor: pointer;
     transition: opacity 0.2s ease-in-out;

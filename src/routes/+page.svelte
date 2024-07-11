@@ -3,7 +3,11 @@
 </svelte:head>
 
 <script>
+    import animatedSections from '$lib/stores/animatedSections';
+
     export let title = "Tim Cai";
+
+    animatedSections.set(3);
 </script>
 
 <div class="flex flex-col items-center justify-center font-ibm mt-10">
@@ -42,8 +46,6 @@
             please contact me at the email above, thank you.
         </p>
     </div>
-
-
 </div>
 
 <style>

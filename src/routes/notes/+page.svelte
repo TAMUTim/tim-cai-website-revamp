@@ -6,6 +6,9 @@
     import { getFormattedDate } from "$lib/utils";
     import { page } from '$app/stores';
     import type { PageData } from './$types'
+    import animatedSections from '$lib/stores/animatedSections';
+
+    animatedSections.set(3);
 
     const currentPath = $page.url.pathname;
 
