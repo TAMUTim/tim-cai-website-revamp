@@ -11,41 +11,41 @@ declare global {
 		// interface Platform {}
 
 		interface MdsvexFile {
-			default: import('svelte/internal').SvelteComponent;
+			default: import('svelte/internal').SvelteComponent
 			metadata: Record<string, string>
 		}
 
-		type MdsvexResolver = () => Promise<MdsvexFile>;
+		type MdsvexResolver = () => Promise<MdsvexFile>
 
 		interface BlogPost {
-			title: string;
-			slug: string;
-			author: string;
-			date: string;
-			published: boolean;
-			readTime: number;
+			title: string
+			slug: string
+			author: string
+			date: string
+			published: boolean
+			readTime: number
 		}
 
 		interface PostYear {
-			year: number;
-			posts: BlogPost[];
+			year: number
+			posts: BlogPost[]
 		}
 
 		interface Note {
-			title: string;
-			slug: string;
-			author: string;
-			date: string;
-			published: boolean;
-			readTime: number;
-			topic: string;
+			title: string
+			slug: string
+			author: string
+			date: string
+			published: boolean
+			readTime: number
+			topic: string
 		}
 
 		interface NoteYear {
-			topic: string;
-			notes: Note[];
+			topic: string
+			notes: Note[]
 		}
 	}
 }
 
-export {};
+export {}
