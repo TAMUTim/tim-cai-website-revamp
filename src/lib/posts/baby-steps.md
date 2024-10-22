@@ -11,25 +11,22 @@ There is a point in every Software Engineer's life, a bit like a mid-life crisis
 where you are convinced that making a personal website will somehow solve all your problems.
 For me, that point was around a month ago, and behold! This website was born!
 I took heavy inspiration from the great [Anthony Fu](http://www.antfu.me) and his
-ever-so-clean and polished website. Some may say I've gone too far (it's essentially a direct copy),
-but I say I haven't gone far enough! There are a couple of features that his has that I want to include in mine;
-however, due to a different tech stack (and probably skill difference), it just isn't working out.
+ever-so-clean and polished website. There are a couple of features that his has that I want to include in mine;
+however, due to a different tech stack (and probably skill diff), it just isn't working out.
 I'll break those down in a second, but first I want to give a quick introduction to how I went about creating the site!
 
 There were a couple of goals I had in mind when I started on this, namely it had to:
-1. Use a new Javascript framework
+1. Use a new (and modern!) Javascript framework
 2. Be reusable for the next couple of years
 3. Look decent
 
 ## [Svelte](https://svelte.dev/)
-After much debate, I chose Svelte for my framework alongside Tailwind, and started with Anthony Fu's website as a base
-model. There are always "fun" and interesting problems when starting out on a new project, and one of the less 
-frustrating ones was in regard to code structure. So Svelte already has a builtin folders structure where directories
-correspond to routes on the website that get generated automagically, which is pretty cool, and something I found
-quite helpful while trying to debug some of the less "fun" issues. One thing I want to bring up is Svelte's way of 
-handling dynamic routes through slugs. For instance, this blogpost was written in markdown and is being served by Svelte 
-through a slug. The process of fetching the page contents was quite strange for me to grasp at first. Here is the code
-for fetching the right file that I stole brazenly from somewhere on GitHub.
+There was a poll on one of the web development subreddits I follow that had a list of web frameworks, and the overall
+developer satisfaction with them. Svelte was first, with users citing its ease of use, responsiveness, and the fact that
+it just made sense. I mean, what else can you really ask for? 
+
+Working with svelte was great but some of the more complicated features were a little harder to get done. For instance,
+this is the code to automatically render this (and all) posts.
 
 ```ts
 import type {PageServerLoad} from "./$types";
@@ -142,6 +139,6 @@ parallax. For some reason I can't quite get the parallax going on the background
 Svelte rendering, but it's a feature that can be added in later. 
 
 ## Thoughts
-Overall the website was quite a daunting undertaking. Despite looking visually similar to [antfu.me](http://www.antfu.me),
-I ended up not being able to steal much code at all! How sad. Either way, this is a project I'd like to take further.
-The two highlighted sections are just pieces of a much larger story that I'd like to fully share one day. Until then, I guess.
+Overall the website was quite a daunting undertaking, especially since it was the first time I've worked with a modern web framework. 
+Either way, this is a project I'd like to take further, like a seasonal thing.
+The two highlighted sections are just pieces of a much larger story that I'd like to fully share one day. Until then! 
