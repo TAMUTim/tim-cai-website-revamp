@@ -27,6 +27,8 @@
             p5.stroke('#ccc');
             p5.noFill();
 
+            p5.colorMode(p5.HSL, 360, 100, 100, 255);
+
             p5.noiseSeed(+new Date());
 
             addPoints();
@@ -43,7 +45,9 @@
                 const length = (p5.noise(x / SCALE, y / SCALE, t * 2) + 0.5) * LENGTH;
                 const nx = x + cosRad * length;
                 const ny = y + p5.sin(rad) * length;
-                p5.stroke(200, 200, 200, (Math.abs(cosRad) * 0.8 + 0.2) * p.opacity * 255);
+                const hue = (t * 100 + x + y) % 360;
+
+                p5.stroke(hue, 80, 50, (Math.abs(cosRad) * 0.8 + 0.2) * p.opacity * 255);
                 p5.circle(nx, ny - offsetY, 1);
             }
         }

@@ -14,15 +14,17 @@
     <div class="w-content" style="--stagger: 1" data-animate>
             <p class="text-5xl text-left font-semibold font-nabla text-slate-50">Tim Cai</p>
             <p class="mt-5 text-lg text-left text-slate-300">Howdy! My name is Timothy Cai, how are you?</p>
+            <p class="mt-5 text-lg text-left text-slate-300">I'm a computer science guy, and creating stuff is my passion!</p>
             <p class="mt-5 text-lg text-left text-slate-300">
-                I make cool things with cool technologies, sometimes relating to Computer Networking.
-                Creating stuff is my passion, and writing about it is too. Check out my writing <a href="/blog">here</a>,
-                and my work <a href="/work">here</a>.
+                Check out my writing <a href="/blog">here</a>, and my work <a href="/work">here</a>.
             </p>
 
             <p class="mt-5 text-lg text-left text-slate-300">
-                Independent of programming, I like fitness, reading, and food.
-                Recently, I've been enjoying the works of Haruki Murakami.
+                Independent of programming, I like getting on the Rift, reading, and food.
+                Recently, I've been on a sci-fi tear - Hyperion is incredible!
+            </p>
+
+            <p class="mt-5 text-lg text-left text-slate-300">
                 I'm also doing a cool thing <a href="/project-summer">here</a>, over the course of 100 days.
             </p>
     </div>
@@ -42,8 +44,7 @@
         <hr class="mt-8 mb-8 rounded bg-slate-400 w-14 border-0 h-0.5">
 
         <p class="text-lg text-left text-slate-300">
-            I am always open to new opportunities, if you are interested in offering me a job,
-            please contact me at the email above, thank you.
+            I am always open to new opportunities, if you'd like to say hi, let me know!
         </p>
     </div>
 </div>
