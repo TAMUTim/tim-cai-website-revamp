@@ -1,14 +1,13 @@
 <svelte:head>
-    <title>{title}</title>
+    <title>{data.frontmatter.title}</title>
 </svelte:head>
 
 <script lang="ts">
     import { getFormattedDate } from '$lib/utils';
     import type { PageData } from './$types';
 
-    export let data: PageData;
-    export let title = data.frontmatter.title;
-    $: component = data.component;
+    let { data }: { data: PageData } = $props();
+    let component = $derived(data.component);
 </script>
 
 <div class="flex flex-col items-center justify-center font-ibm mt-10">
