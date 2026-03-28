@@ -3,7 +3,7 @@
 </svelte:head>
 
 <script lang="ts">
-    import animatedSections from '$lib/stores/animatedSections';
+    import { animatedSections } from '$lib/stores/animatedSections.svelte';
 
     animatedSections.set(2);
 

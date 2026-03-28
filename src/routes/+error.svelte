@@ -4,7 +4,7 @@
 
 <script>
     export let title = "Error - Tim Cai"
-    import animatedSections from '$lib/stores/animatedSections';
+    import { animatedSections } from '$lib/stores/animatedSections.svelte';
 
     animatedSections.set(2);
 

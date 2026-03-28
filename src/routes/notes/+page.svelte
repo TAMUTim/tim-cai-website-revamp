@@ -6,7 +6,7 @@
     import { getFormattedDate } from "$lib/utils";
     import { page } from '$app/stores';
     import type { PageData } from './$types'
-    import animatedSections from '$lib/stores/animatedSections';
+    import { animatedSections } from '$lib/stores/animatedSections.svelte';
 
     animatedSections.set(3);
 
