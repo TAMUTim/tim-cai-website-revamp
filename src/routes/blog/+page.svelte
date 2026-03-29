@@ -13,7 +13,6 @@
 
     animatedSections.set(3);
 
-    let title = "Blog - Tim Cai";
     let { data }: { data: PageData } = $props();
 
     let postsByYear: App.PostYear[] = $derived.by(() => {

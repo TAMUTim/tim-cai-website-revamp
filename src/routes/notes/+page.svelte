@@ -14,7 +14,6 @@
     animatedSections.set(3);
 
     let { data }: { data: PageData } = $props();
-    let title = "Notes - Tim Cai";
 
     let notesByYear: App.NoteYear[] = $derived.by(() => {
         const result: App.NoteYear[] = [];
