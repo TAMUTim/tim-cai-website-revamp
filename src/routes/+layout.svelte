@@ -38,6 +38,12 @@
 
 <svelte:head>
     <link rel="shortcut icon" href={GoobFavicon} />
+    <meta name="description" content="Tim Cai — software engineer, writer, and maker of things." />
+    <meta property="og:title" content="Tim Cai" />
+    <meta property="og:description" content="Tim Cai — software engineer, writer, and maker of things." />
+    <meta property="og:url" content={$page.url.href} />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href={$page.url.href} />
 </svelte:head>
 
 <svelte:window bind:scrollY={y} />
