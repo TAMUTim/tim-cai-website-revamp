@@ -1,42 +1,46 @@
 <svelte:head>
-    <title>{title}</title>
+    <title>Notes — Tim Cai</title>
+    <meta name="description" content="Notes by Tim Cai" />
+    <meta property="og:title" content="Notes — Tim Cai" />
+    <meta property="og:description" content="Notes by Tim Cai" />
 </svelte:head>
 
 <script lang="ts">
     import { getFormattedDate } from "$lib/utils";
     import { page } from '$app/stores';
     import type { PageData } from './$types'
-    import animatedSections from '$lib/stores/animatedSections';
+    import { animatedSections } from '$lib/stores/animatedSections.svelte';
 
     animatedSections.set(3);
 
-    const currentPath = $page.url.pathname;
+    let { data }: { data: PageData } = $props();
 
-    export let title = "Notes - Tim Cai";
-    export let data: PageData;
+    let notesByYear: App.NoteYear[] = $derived.by(() => {
+        const result: App.NoteYear[] = [];
 
-    let notesByYear: App.NoteYear[] = [];
-
-    for(const post of data.notes) {
-        if(notesByYear.length === 0 || (notesByYear[notesByYear.length - 1].topic !== post.topic)) {
-            notesByYear.push(
-                {
-                    topic: post.topic,
-                    notes: [post]
-                }
-            );
-        } else {
-            notesByYear[notesByYear.length - 1].notes.push(post);
+        for(const post of data.notes) {
+            if(result.length === 0 || (result[result.length - 1].topic !== post.topic)) {
+                result.push(
+                    {
+                        topic: post.topic,
+                        notes: [post]
+                    }
+                );
+            } else {
+                result[result.length - 1].notes.push(post);
+            }
         }
-    }
+
+        return result;
+    });
 </script>
 
 <div class="flex flex-col items-center justify-center font-ibm mt-10">
     <div class="w-content flex flex-row gap-4 font-nabla" style="--stagger: 1" data-animate>
-        <a href="/blog" class={currentPath === '/blog' ? 'active' : 'inactive'}>
+        <a href="/blog" class={$page.url.pathname === '/blog' ? 'active' : 'inactive'}>
             <p class="text-4xl font-semibold text-slate-50">Blog</p>
         </a>
-        <a href="/notes" class={currentPath === '/notes' ? 'active' : 'inactive'}>
+        <a href="/notes" class={$page.url.pathname === '/notes' ? 'active' : 'inactive'}>
             <p class="text-4xl font-semibold text-slate-50">Notes</p>
         </a>
     </div>

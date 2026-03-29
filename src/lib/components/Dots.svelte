@@ -1,89 +1,93 @@
 <script lang="ts">
-    import P5 from 'p5-svelte';
+    import type p5 from 'p5';
 
-    let body = document.body;
-    let html = document.documentElement;
-
-    let w = window.innerWidth;
-    let h = Math.max(
-      body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight
-    );
-
-    const offsetY = window.scrollY;
-
-    let canvas: any;
+    let container: HTMLDivElement;
 
     const SCALE = 300;
     const LENGTH = 12;
     const SPACING = 20;
 
-    const existingPoints = new Set<string>();
-    const points: { x: number, y: number, opacity: number }[] = [];
+    $effect(() => {
+        let instance: p5;
 
-    let sketch = (p5: any) => {
-        p5.setup = () => {
-            canvas = p5.createCanvas(w, h);
-            p5.background('#FFFFFF');
-            p5.stroke('#ccc');
-            p5.noFill();
+        (async () => {
+        const { default: p5 } = await import('p5');
 
-            p5.colorMode(p5.HSL, 360, 100, 100, 255);
+        const body = document.body;
+        const html = document.documentElement;
 
-            p5.noiseSeed(+new Date());
-
-            addPoints();
-        }
-
-        p5.draw = () => {
-            p5.background('#ffffff');
-            const t = +new Date() / 10000;
-
-            for (const p of points) {
-                const { x, y } = p;
-                const rad = getForceOnPoint(x, y, t);
-                const cosRad = p5.cos(rad);
-                const length = (p5.noise(x / SCALE, y / SCALE, t * 2) + 0.5) * LENGTH;
-                const nx = x + cosRad * length;
-                const ny = y + p5.sin(rad) * length;
-                const hue = (t * 100 + x + y) % 360;
-
-                p5.stroke(hue, 80, 50, (Math.abs(cosRad) * 0.8 + 0.2) * p.opacity * 255);
-                p5.circle(nx, ny - offsetY, 1);
-            }
-        }
-
-        function getForceOnPoint(x: number, y: number, z: number) {
-            return (p5.noise(x / SCALE, y / SCALE, z) - 0.5) * 2 * p5.TWO_PI;
-        }
-    }
-
-    function addPoints() {
-        for (let x = -SPACING / 2; x < w + SPACING; x += SPACING) {
-            for (let y = -SPACING / 2; y < h + offsetY + SPACING; y += SPACING) {
-                const id = `${x}-${y}`;
-                if (existingPoints.has(id)) {
-                    continue;
-                }
-                existingPoints.add(id);
-                points.push({ x, y, opacity: Math.random() * 0.5 + 0.5 });
-            }
-        }
-    }
-
-    window.addEventListener('resize', () => {
-        body = document.body;
-        html = document.documentElement;
-
-        w = window.outerWidth;
-        h = Math.max(
-          body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight
+        let w = window.innerWidth;
+        let h = Math.max(
+            body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight
         );
 
-        canvas.resize(w, h);
-        addPoints();
+        const offsetY = window.scrollY;
+
+        const existingPoints = new Set<string>();
+        const points: { x: number; y: number; opacity: number }[] = [];
+
+        function addPoints() {
+            for (let x = -SPACING / 2; x < w + SPACING; x += SPACING) {
+                for (let y = -SPACING / 2; y < h + offsetY + SPACING; y += SPACING) {
+                    const id = `${x}-${y}`;
+                    if (existingPoints.has(id)) continue;
+                    existingPoints.add(id);
+                    points.push({ x, y, opacity: Math.random() * 0.5 + 0.5 });
+                }
+            }
+        }
+
+        function getForceOnPoint(sketch: p5, x: number, y: number, z: number) {
+            return (sketch.noise(x / SCALE, y / SCALE, z) - 0.5) * 2 * sketch.TWO_PI;
+        }
+
+        instance = new p5((sketch: p5) => {
+            sketch.setup = () => {
+                sketch.createCanvas(w, h);
+                sketch.background('#FFFFFF');
+                sketch.stroke('#ccc');
+                sketch.noFill();
+                sketch.colorMode(sketch.HSL, 360, 100, 100, 255);
+                sketch.noiseSeed(+new Date());
+                addPoints();
+            };
+
+            sketch.draw = () => {
+                sketch.background('#ffffff');
+                const t = +new Date() / 10000;
+
+                for (const p of points) {
+                    const { x, y } = p;
+                    const rad = getForceOnPoint(sketch, x, y, t);
+                    const cosRad = sketch.cos(rad);
+                    const length = (sketch.noise(x / SCALE, y / SCALE, t * 2) + 0.5) * LENGTH;
+                    const nx = x + cosRad * length;
+                    const ny = y + sketch.sin(rad) * length;
+                    const hue = (t * 100 + x + y) % 360;
+
+                    sketch.stroke(hue, 80, 50, (Math.abs(cosRad) * 0.8 + 0.2) * p.opacity * 255);
+                    sketch.circle(nx, ny - offsetY, 1);
+                }
+            };
+
+            sketch.windowResized = () => {
+                w = window.outerWidth;
+                h = Math.max(
+                    document.body.scrollHeight, document.body.offsetHeight,
+                    document.documentElement.clientHeight, document.documentElement.scrollHeight,
+                    document.documentElement.offsetHeight
+                );
+                sketch.resizeCanvas(w, h);
+                addPoints();
+            };
+        }, container);
+
+        })();
+
+        return () => {
+            instance?.remove();
+        };
     });
 </script>
 
-<div class="absolute bg-fixed pointer-events-none invert">
-    <P5 {sketch}/>
-</div>
+<div class="absolute bg-fixed pointer-events-none invert" bind:this={container}></div>

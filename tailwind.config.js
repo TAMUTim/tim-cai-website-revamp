@@ -8,7 +8,7 @@ export default {
     extend: {
       fontFamily: {
         ibm: ["IBM Plex Sans", "sans-serif"],
-        nabla: ["Nabla", "sans-serif"],
+        nabla: ["Space Grotesk", "sans-serif"],
         ibmMono: ["IBM Plex Mono", "serif"]
       },
       width: {

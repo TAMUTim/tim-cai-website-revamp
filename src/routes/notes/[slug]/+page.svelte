@@ -1,16 +1,13 @@
 <svelte:head>
-    <title>{title}</title>
+    <title>{data.frontmatter.title}</title>
 </svelte:head>
 
 <script lang="ts">
     import { getFormattedDate } from '$lib/utils';
     import type { PageData } from './$types';
-    import type { SvelteComponent } from "svelte";
 
-    export let data: PageData;
-    export let title = data.frontmatter.title;
-    type C = $$Generic<typeof SvelteComponent<any, any, any>>;
-    $: component = data.component as unknown as C;
+    let { data }: { data: PageData } = $props();
+    let Component = $derived(data.component);
 </script>
 
 <div class="flex flex-col items-center justify-center font-ibm mt-10">
@@ -20,6 +17,6 @@
     </div>
 
     <div class="w-content text-slate-300 text-lg mt-10" style="--stagger: 2" data-animate>
-        <svelte:component this={component} />
+        <Component />
     </div>
 </div>

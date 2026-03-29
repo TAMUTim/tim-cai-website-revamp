@@ -3,8 +3,8 @@
 </svelte:head>
 
 <script>
-    export let title = "Error - Tim Cai"
-    import animatedSections from '$lib/stores/animatedSections';
+    let title = "Error - Tim Cai"
+    import { animatedSections } from '$lib/stores/animatedSections.svelte';
 
     animatedSections.set(2);
 
@@ -17,7 +17,7 @@
     <div class="w-content" style="--stagger: 1" data-animate>
         <p class="text-3xl font-semibold text-slate-50">Error 404 or something...</p>
         <p class="mt-5 text-lg text-left text-slate-300">Hmm, that's a little strange, how did you end up here?</p>
-        <p class="mt-5 text-lg text-left text-slate-300">Anyhow, here's the <button on:click={goBack}>way back</button> if you didn't mean to be here. Thanks for visiting!</p>
+        <p class="mt-5 text-lg text-left text-slate-300">Anyhow, here's the <button onclick={goBack}>way back</button> if you didn't mean to be here. Thanks for visiting!</p>
     </div>
 </div>
 

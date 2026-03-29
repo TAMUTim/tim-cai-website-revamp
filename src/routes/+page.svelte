@@ -3,9 +3,9 @@
 </svelte:head>
 
 <script>
-    import animatedSections from '$lib/stores/animatedSections';
+    import { animatedSections } from '$lib/stores/animatedSections.svelte';
 
-    export let title = "Tim Cai";
+    let title = "Tim Cai";
 
     animatedSections.set(3);
 </script>

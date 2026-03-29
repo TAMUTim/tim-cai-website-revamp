@@ -3,7 +3,7 @@
     import '@fortawesome/fontawesome-free/css/all.min.css'
     import { browser } from "$app/environment";
     import { navigating, page } from '$app/stores';
-    import animatedSections from '$lib/stores/animatedSections';
+    import { animatedSections } from '$lib/stores/animatedSections.svelte';
 
     import NProgress from 'nprogress';
 
@@ -14,14 +14,15 @@
     import Resume from '$lib/assets/tim_cai_resume.pdf';
     import GoobFavicon from '$lib/assets/favicons/favicon.ico';
 
-    $: {
+    let { children } = $props();
+
+    $effect(() => {
         if ($navigating) {
             NProgress.start();
-        }
-        else {
+        } else {
             NProgress.done();
         }
-    }
+    });
 
     function scrollToTop() {
         window.scrollTo({
@@ -30,21 +31,24 @@
         });
     }
 
-    let y: number;
-    let numSections = 0;
+    let y: number = $state(0);
 
-    animatedSections.subscribe((sections) => {
-        numSections = sections;
-    })
-
-    $: renderDots = !($page.url.pathname.includes('blog/') || $page.url.pathname.includes('notes/'));
+    let renderDots = $derived(!($page.url.pathname.includes('blog/') || $page.url.pathname.includes('notes/')));
 </script>
 
 <svelte:head>
     <link rel="shortcut icon" href={GoobFavicon} />
+    <meta name="description" content="Tim Cai — software engineer, writer, and maker of things." />
+    <meta property="og:title" content="Tim Cai" />
+    <meta property="og:description" content="Tim Cai — software engineer, writer, and maker of things." />
+    <meta property="og:url" content={$page.url.href} />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href={$page.url.href} />
 </svelte:head>
 
 <svelte:window bind:scrollY={y} />
+
+<a href="#main-content" class="skip-link">Skip to content</a>
 
 {#if browser && renderDots}
     <Dots />
@@ -64,7 +68,7 @@
                 <a class="text-lg font-semibold mr-6" href="/projects">Projects</a>
                 <a class="text-lg font-semibold mr-6" href="/hundred">100</a>
                 <a class="text-lg font-semibold mr-6" href={Resume} target="_blank">Resume</a>
-                <a class="text-lg" target="_blank" href="https://github.com/TAMUTim">
+                <a class="text-lg" target="_blank" href="https://github.com/TAMUTim" aria-label="GitHub profile">
                     <i class="fa-brands fa-github"></i>
                 </a>
             </div>
@@ -72,21 +76,24 @@
     </div>
 </nav>
 
-<slot />
+<main id="main-content">
+    {@render children()}
+</main>
 
 <button
         title="Scroll to the top"
+        aria-label="Scroll to top"
         class="fixed right-3 bottom-3 w-10 h-10 rounded-full z-100 print:hidden text-slate-200 {y > 10 ? 'opacity-100' : 'opacity-0'}"
-        on:click={scrollToTop}
+        onclick={scrollToTop}
 >
     <i class="fa-solid fa-arrow-up"></i>
 </button>
 
 {#key $page.url.pathname}
     <div class="flex flex-row items-center justify-center font-ibm">
-        <div class="mt-10 mb-6 w-content" style="--stagger: {numSections + 1}" data-animate>
+        <div class="mt-10 mb-6 w-content" style="--stagger: {animatedSections.count + 1}" data-animate>
             <span class="text-sm font-semibold text-slate-300">2024-Death CC Tim Cai</span>
-            <div class="flex-auto" />
+            <div class="flex-auto"></div>
         </div>
     </div>
 {/key}
