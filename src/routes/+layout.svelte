@@ -54,7 +54,7 @@
     <Dots />
 {/if}
 
-<nav class="font-ibm z-50 sticky top-0 bg-[--c-bg]">
+<nav class="font-ibm z-10 sticky top-0">
     <div class="mx-auto px-2 py-2 sm:px-6 lg:px-8">
         <div class="relative flex h-16 items-center justify-between">
             <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
@@ -101,7 +101,6 @@
 <style>
 .nav-links a {
     color: var(--c-slate-50);
-    -webkit-text-fill-color: var(--c-slate-50);
     text-decoration: none;
     cursor: pointer;
     transition: opacity 0.2s ease-in-out;
