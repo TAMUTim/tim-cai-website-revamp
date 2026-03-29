@@ -16,25 +16,29 @@
     let title = "Blog - Tim Cai";
     let { data }: { data: PageData } = $props();
 
-    let postsByYear: App.PostYear[] = [
-        {
-            year: new Date().getFullYear(),
-            posts: []
-        }
-    ];
-
-    for(const post of data.posts) {
-        if(postsByYear[postsByYear.length - 1].year !== new Date(post.date).getFullYear()) {
-            let newYearObj: App.PostYear = {
-                year: new Date(post.date).getFullYear(),
-                posts: [post]
+    let postsByYear: App.PostYear[] = $derived.by(() => {
+        const result: App.PostYear[] = [
+            {
+                year: new Date().getFullYear(),
+                posts: []
             }
+        ];
 
-            postsByYear.push(newYearObj);
-        } else {
-            postsByYear[postsByYear.length - 1].posts.push(post);
+        for(const post of data.posts) {
+            if(result[result.length - 1].year !== new Date(post.date).getFullYear()) {
+                let newYearObj: App.PostYear = {
+                    year: new Date(post.date).getFullYear(),
+                    posts: [post]
+                }
+
+                result.push(newYearObj);
+            } else {
+                result[result.length - 1].posts.push(post);
+            }
         }
-    }
+
+        return result;
+    });
 </script>
 
 <div class="flex flex-col items-center justify-center font-ibm mt-10">

@@ -93,7 +93,7 @@
     <div class="flex flex-row items-center justify-center font-ibm">
         <div class="mt-10 mb-6 w-content" style="--stagger: {animatedSections.count + 1}" data-animate>
             <span class="text-sm font-semibold text-slate-300">2024-Death CC Tim Cai</span>
-            <div class="flex-auto" />
+            <div class="flex-auto"></div>
         </div>
     </div>
 {/key}

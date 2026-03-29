@@ -16,7 +16,7 @@
     import type { PageData } from './$types';
 
     let { data }: { data: PageData } = $props();
-    let component = $derived(data.component);
+    let Component = $derived(data.component);
 </script>
 
 <div class="flex flex-col items-center justify-center font-ibm mt-10">
@@ -26,6 +26,6 @@
     </div>
 
     <div class="w-content text-slate-300 mt-8 prose prose-content" style="--stagger: 2" data-animate>
-        <svelte:component this={component} />
+        <Component />
     </div>
 </div>

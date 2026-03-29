@@ -16,20 +16,24 @@
     let { data }: { data: PageData } = $props();
     let title = "Notes - Tim Cai";
 
-    let notesByYear: App.NoteYear[] = [];
+    let notesByYear: App.NoteYear[] = $derived.by(() => {
+        const result: App.NoteYear[] = [];
 
-    for(const post of data.notes) {
-        if(notesByYear.length === 0 || (notesByYear[notesByYear.length - 1].topic !== post.topic)) {
-            notesByYear.push(
-                {
-                    topic: post.topic,
-                    notes: [post]
-                }
-            );
-        } else {
-            notesByYear[notesByYear.length - 1].notes.push(post);
+        for(const post of data.notes) {
+            if(result.length === 0 || (result[result.length - 1].topic !== post.topic)) {
+                result.push(
+                    {
+                        topic: post.topic,
+                        notes: [post]
+                    }
+                );
+            } else {
+                result[result.length - 1].notes.push(post);
+            }
         }
-    }
+
+        return result;
+    });
 </script>
 
 <div class="flex flex-col items-center justify-center font-ibm mt-10">

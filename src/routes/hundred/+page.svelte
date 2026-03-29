@@ -10,7 +10,7 @@
     let pageTitle = "100 - Tim Cai";
     let { data }: { data: any } = $props();
 
-    const titles = data.titles;
+    const titles = $derived(data.titles);
 </script>
 
 <div class="flex items-center justify-center mt-20">
