@@ -11,10 +11,6 @@ export default {
         nabla: ["Space Grotesk", "sans-serif"],
         ibmMono: ["IBM Plex Mono", "serif"]
       },
-      width: {
-        'content': '40rem',
-        'hundred': '55rem'
-      },
       typography: ({ theme }) => ({
         content: {
           css: {

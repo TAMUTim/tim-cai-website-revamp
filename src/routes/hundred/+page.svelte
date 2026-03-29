@@ -13,8 +13,8 @@
     const titles = $derived(data.titles);
 </script>
 
-<div class="flex items-center justify-center mt-20">
-    <div class="flex flex-col flex-wrap mt-10 w-content border-2 min-h-[45rem] font-ibmMono" style="--stagger: 1" data-animate>
+<div class="flex items-center justify-center mt-10 sm:mt-20">
+    <div class="flex flex-col flex-wrap mt-10 w-full max-w-[40rem] px-5 sm:px-0 border-2 sm:min-h-[45rem] font-ibmMono" style="--stagger: 1" data-animate>
         {#each titles as title, i}
             <a class="text-slate-50 mt-3 ml-3" href="/hundred/{title}">
                 {i}. {title}

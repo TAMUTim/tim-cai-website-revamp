@@ -11,7 +11,7 @@
 </svelte:head>
 
 <div class="flex flex-col items-center justify-center font-ibm mt-10">
-	<div class="w-content" style="--stagger: 1" data-animate>
+	<div class="w-full max-w-[40rem] px-5 sm:px-0" style="--stagger: 1" data-animate>
 		<p class="text-5xl text-left font-semibold font-nabla text-slate-50">Tim Cai</p>
 		<p class="mt-5 text-lg text-left text-slate-300">Howdy! My name is Tim Cai, how are you?</p>
 		<p class="mt-5 text-lg text-left text-slate-300">
@@ -21,7 +21,7 @@
 			Check out my thoughts <a href="/blog">here</a>, and my work <a href="/work">here</a>.
 		</p>
 	</div>
-	<div class="w-content" style="--stagger: 2" data-animate>
+	<div class="w-full max-w-[40rem] px-5 sm:px-0" style="--stagger: 2" data-animate>
 		<hr class="mt-8 mb-8 rounded bg-slate-400 w-14 border-0 h-0.5" />
 
 		<p class="text-lg text-left text-slate-300">Find me on</p>
@@ -39,7 +39,7 @@
 			or email me directly at <a href="mailto:timcai.tyc@gmail.com">timcai.tyc@gmail.com</a>
 		</p>
 	</div>
-	<div class="w-content" style="--stagger: 2" data-animate>
+	<div class="w-full max-w-[40rem] px-5 sm:px-0" style="--stagger: 2" data-animate>
 		<hr class="mt-8 mb-8 rounded bg-slate-400 w-14 border-0 h-0.5" />
 
 		<p class="text-lg text-left text-slate-300">

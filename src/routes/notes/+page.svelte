@@ -36,7 +36,7 @@
 </script>
 
 <div class="flex flex-col items-center justify-center font-ibm mt-10">
-    <div class="w-content flex flex-row gap-4 font-nabla" style="--stagger: 1" data-animate>
+    <div class="w-full max-w-[40rem] px-5 sm:px-0 flex flex-row gap-4 font-nabla" style="--stagger: 1" data-animate>
         <a href="/blog" class={$page.url.pathname === '/blog' ? 'active' : 'inactive'}>
             <p class="text-4xl font-semibold text-slate-50">Blog</p>
         </a>
@@ -45,7 +45,7 @@
         </a>
     </div>
 
-    <div class="w-content flex flex-col mt-14 gap-16" style="--stagger: 2" data-animate>
+    <div class="w-full max-w-[40rem] px-5 sm:px-0 flex flex-col mt-14 gap-16" style="--stagger: 2" data-animate>
         {#each notesByYear as { topic, notes }}
             <div class="flex flex-col gap-4">
                 <p class="text-4xl font-nabla text-right">{ topic }</p>
