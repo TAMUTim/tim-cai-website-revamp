@@ -8,7 +8,7 @@
 
 	let { createShader }: Props = $props();
 
-	let canvas: HTMLCanvasElement;
+	let canvas: HTMLCanvasElement = $state()!;
 	let fallback = $state(false);
 
 	$effect(() => {
@@ -30,6 +30,7 @@
 			return;
 		}
 
+		const glCtx = gl;
 		const isMobile = window.innerWidth < 768;
 
 		// Mouse tracking (desktop only)
@@ -60,15 +61,15 @@
 			height = window.innerHeight;
 			canvas.width = width;
 			canvas.height = height;
-			gl.viewport(0, 0, width, height);
+			glCtx.viewport(0, 0, width, height);
 			shader.resize(width, height);
 		}
 
 		canvas.width = width;
 		canvas.height = height;
-		gl.viewport(0, 0, width, height);
+		glCtx.viewport(0, 0, width, height);
 
-		const shader = createShader(gl, width, height, isMobile);
+		const shader = createShader(glCtx, width, height, isMobile);
 
 		window.addEventListener('resize', onResize);
 
