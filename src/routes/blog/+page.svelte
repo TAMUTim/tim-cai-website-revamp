@@ -1,5 +1,8 @@
 <svelte:head>
-    <title>{title}</title>
+    <title>Blog — Tim Cai</title>
+    <meta name="description" content="Blog posts by Tim Cai" />
+    <meta property="og:title" content="Blog — Tim Cai" />
+    <meta property="og:description" content="Blog posts by Tim Cai" />
 </svelte:head>
 
 <script lang="ts">

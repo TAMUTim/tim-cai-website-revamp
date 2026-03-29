@@ -1,8 +1,17 @@
 <svelte:head>
-    <title>{data.frontmatter.title}</title>
+    <title>{data.frontmatter.title} — Tim Cai</title>
+    <meta name="description" content="{data.frontmatter.title} by {data.frontmatter.author}" />
+    <meta property="og:title" content={data.frontmatter.title} />
+    <meta property="og:description" content="{data.frontmatter.title} by {data.frontmatter.author}" />
+    <meta property="og:url" content={$page.url.href} />
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content={data.frontmatter.date} />
+    <meta property="article:author" content={data.frontmatter.author} />
+    <link rel="canonical" href={$page.url.href} />
 </svelte:head>
 
 <script lang="ts">
+    import { page } from '$app/stores';
     import { getFormattedDate } from '$lib/utils';
     import type { PageData } from './$types';
 
