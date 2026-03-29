@@ -34,6 +34,13 @@
 
     let y: number = $state(0);
 
+    let menuOpen = $state(false);
+
+    $effect(() => {
+        $page.url.pathname;
+        menuOpen = false;
+    });
+
     let renderBackground = $derived(!($page.url.pathname.includes('blog/') || $page.url.pathname.includes('notes/')));
 </script>
 
@@ -55,15 +62,24 @@
     <ShaderBackground createShader={createFlowField} />
 {/if}
 
-<nav class="font-ibm z-10 sticky top-0">
+<nav class="font-ibm z-10 sticky top-0 bg-black/80 backdrop-blur-sm">
     <div class="mx-auto px-2 py-2 sm:px-6 lg:px-8">
         <div class="relative flex h-16 items-center justify-between">
-            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+            <div class="flex flex-1 items-center justify-start">
                 <a class="flex flex-shrink-0 items-center" href="/">
                     <img class="h-10 w-auto" src={GoobImage} alt="really cool drawing of me">
                 </a>
             </div>
-            <div class="nav-links font-nabla absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <button
+                class="sm:hidden text-slate-200 p-2"
+                onclick={() => menuOpen = !menuOpen}
+                aria-label="Toggle menu"
+                aria-expanded={menuOpen}
+                aria-controls="mobile-menu"
+            >
+                <i class="fa-solid {menuOpen ? 'fa-xmark' : 'fa-bars'} text-xl"></i>
+            </button>
+            <div class="nav-links font-nabla hidden sm:flex absolute inset-y-0 right-0 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <a class="text-lg font-semibold mr-6" href="/blog">Blog</a>
                 <a class="text-lg font-semibold mr-6" href="/notes">Notes</a>
                 <a class="text-lg font-semibold mr-6" href="/projects">Projects</a>
@@ -74,6 +90,20 @@
                 </a>
             </div>
         </div>
+        {#if menuOpen}
+            <div id="mobile-menu" class="sm:hidden nav-links font-nabla border-t border-slate-800">
+                <div class="flex flex-col py-2">
+                    <a class="py-3 px-4 text-lg font-semibold" href="/blog">Blog</a>
+                    <a class="py-3 px-4 text-lg font-semibold" href="/notes">Notes</a>
+                    <a class="py-3 px-4 text-lg font-semibold" href="/projects">Projects</a>
+                    <a class="py-3 px-4 text-lg font-semibold" href="/hundred">100</a>
+                    <a class="py-3 px-4 text-lg font-semibold" href={Resume} target="_blank">Resume</a>
+                    <a class="py-3 px-4 text-lg" target="_blank" href="https://github.com/TAMUTim" aria-label="GitHub profile">
+                        <i class="fa-brands fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        {/if}
     </div>
 </nav>
 
