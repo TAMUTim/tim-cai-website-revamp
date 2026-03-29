@@ -1,5 +1,5 @@
 <script lang="ts">
-    import p5 from 'p5';
+    import type p5 from 'p5';
 
     let container: HTMLDivElement;
 
@@ -8,6 +8,11 @@
     const SPACING = 20;
 
     $effect(() => {
+        let instance: p5;
+
+        (async () => {
+        const { default: p5 } = await import('p5');
+
         const body = document.body;
         const html = document.documentElement;
 
@@ -36,7 +41,7 @@
             return (sketch.noise(x / SCALE, y / SCALE, z) - 0.5) * 2 * sketch.TWO_PI;
         }
 
-        const instance = new p5((sketch: p5) => {
+        instance = new p5((sketch: p5) => {
             sketch.setup = () => {
                 sketch.createCanvas(w, h);
                 sketch.background('#FFFFFF');
@@ -77,8 +82,10 @@
             };
         }, container);
 
+        })();
+
         return () => {
-            instance.remove();
+            instance?.remove();
         };
     });
 </script>
