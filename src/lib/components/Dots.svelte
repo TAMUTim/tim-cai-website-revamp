@@ -90,4 +90,4 @@
     });
 </script>
 
-<div class="absolute top-0 left-0 -z-10 pointer-events-none invert" bind:this={container}></div>
+<div class="absolute top-0 left-0 z-0 pointer-events-none invert" bind:this={container}></div>
