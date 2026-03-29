@@ -10,10 +10,8 @@
 
     animatedSections.set(3);
 
-    const currentPath = $page.url.pathname;
-
-    export let title = "Notes - Tim Cai";
-    export let data: PageData;
+    let { data }: { data: PageData } = $props();
+    let title = "Notes - Tim Cai";
 
     let notesByYear: App.NoteYear[] = [];
 
@@ -33,10 +31,10 @@
 
 <div class="flex flex-col items-center justify-center font-ibm mt-10">
     <div class="w-content flex flex-row gap-4 font-nabla" style="--stagger: 1" data-animate>
-        <a href="/blog" class={currentPath === '/blog' ? 'active' : 'inactive'}>
+        <a href="/blog" class={$page.url.pathname === '/blog' ? 'active' : 'inactive'}>
             <p class="text-4xl font-semibold text-slate-50">Blog</p>
         </a>
-        <a href="/notes" class={currentPath === '/notes' ? 'active' : 'inactive'}>
+        <a href="/notes" class={$page.url.pathname === '/notes' ? 'active' : 'inactive'}>
             <p class="text-4xl font-semibold text-slate-50">Notes</p>
         </a>
     </div>
