@@ -1,51 +1,27 @@
-import '$lib/styles/main.css'
+import '$lib/styles/main.css';
 
-// See https://kit.svelte.dev/docs/types#app
-// for information about these interfaces
 declare global {
-	namespace App {
-		// interface Error {}
-		// interface Locals {}
-		// interface PageData {}
-		// interface PageState {}
-		// interface Platform {}
+    namespace App {
+        type BlogPost = import('$lib/schemas').BlogPost;
+        type Note = import('$lib/schemas').Note;
 
-		interface MdsvexFile {
-			default: import('svelte/internal').SvelteComponent;
-			metadata: Record<string, string>
-		}
+        interface PostYear {
+            year: number;
+            posts: BlogPost[];
+        }
 
-		type MdsvexResolver = () => Promise<MdsvexFile>;
+        interface NoteYear {
+            topic: string;
+            notes: Note[];
+        }
 
-		interface BlogPost {
-			title: string;
-			slug: string;
-			author: string;
-			date: string;
-			published: boolean;
-			readTime: number;
-		}
+        interface MdsvexFile {
+            default: import('svelte').Component<any>;
+            metadata: Record<string, string>;
+        }
 
-		interface PostYear {
-			year: number;
-			posts: BlogPost[];
-		}
-
-		interface Note {
-			title: string;
-			slug: string;
-			author: string;
-			date: string;
-			published: boolean;
-			readTime: number;
-			topic: string;
-		}
-
-		interface NoteYear {
-			topic: string;
-			notes: Note[];
-		}
-	}
+        type MdsvexResolver = () => Promise<MdsvexFile>;
+    }
 }
 
 export {};
