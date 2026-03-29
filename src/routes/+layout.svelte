@@ -7,7 +7,8 @@
 
     import NProgress from 'nprogress';
 
-    import Dots from '$lib/components/Dots.svelte';
+    import ShaderBackground from '$lib/components/ShaderBackground.svelte';
+    import { createFlowField } from '$lib/components/shaders/flowField';
 
     // Assets
     import GoobImage from '$lib/assets/goob.png';
@@ -33,7 +34,7 @@
 
     let y: number = $state(0);
 
-    let renderDots = $derived(!($page.url.pathname.includes('blog/') || $page.url.pathname.includes('notes/')));
+    let renderBackground = $derived(!($page.url.pathname.includes('blog/') || $page.url.pathname.includes('notes/')));
 </script>
 
 <svelte:head>
@@ -50,8 +51,8 @@
 
 <a href="#main-content" class="skip-link">Skip to content</a>
 
-{#if browser && renderDots}
-    <Dots />
+{#if browser && renderBackground}
+    <ShaderBackground createShader={createFlowField} />
 {/if}
 
 <nav class="font-ibm z-10 sticky top-0">
