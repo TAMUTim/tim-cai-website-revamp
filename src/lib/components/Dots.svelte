@@ -1,15 +1,13 @@
 <script lang="ts">
-    import { onMount, onDestroy } from 'svelte';
     import p5 from 'p5';
 
     let container: HTMLDivElement;
-    let p5Instance: p5;
 
     const SCALE = 300;
     const LENGTH = 12;
     const SPACING = 20;
 
-    onMount(() => {
+    $effect(() => {
         const body = document.body;
         const html = document.documentElement;
 
@@ -38,7 +36,7 @@
             return (sketch.noise(x / SCALE, y / SCALE, z) - 0.5) * 2 * sketch.TWO_PI;
         }
 
-        p5Instance = new p5((sketch: p5) => {
+        const instance = new p5((sketch: p5) => {
             sketch.setup = () => {
                 sketch.createCanvas(w, h);
                 sketch.background('#FFFFFF');
@@ -78,12 +76,10 @@
                 addPoints();
             };
         }, container);
-    });
 
-    onDestroy(() => {
-        if (p5Instance) {
-            p5Instance.remove();
-        }
+        return () => {
+            instance.remove();
+        };
     });
 </script>
 

@@ -7,8 +7,8 @@
 
     animatedSections.set(2);
 
-    export let pageTitle = "100 - Tim Cai";
-    export let data;
+    let pageTitle = "100 - Tim Cai";
+    let { data }: { data: any } = $props();
 
     const titles = data.titles;
 </script>
