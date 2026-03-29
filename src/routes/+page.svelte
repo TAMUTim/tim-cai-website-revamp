@@ -10,9 +10,9 @@
 	<title>{title}</title>
 </svelte:head>
 
-<div class="flex flex-col items-center justify-center font-ibm mt-10">
+<div class="flex flex-col items-center justify-center font-ibm mt-6 sm:mt-10">
 	<div class="w-full max-w-[40rem] px-5 sm:px-0" style="--stagger: 1" data-animate>
-		<p class="text-5xl text-left font-semibold font-nabla text-slate-50">Tim Cai</p>
+		<p class="text-3xl sm:text-5xl text-left font-semibold font-nabla text-slate-50">Tim Cai</p>
 		<p class="mt-5 text-lg text-left text-slate-300">Howdy! My name is Tim Cai, how are you?</p>
 		<p class="mt-5 text-lg text-left text-slate-300">
 			I'm a software engineer at Roblox, currently working on cool problems in Geometry!

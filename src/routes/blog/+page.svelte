@@ -40,20 +40,20 @@
     });
 </script>
 
-<div class="flex flex-col items-center justify-center font-ibm mt-10">
+<div class="flex flex-col items-center justify-center font-ibm mt-6 sm:mt-10">
     <div class="w-full max-w-[40rem] px-5 sm:px-0 flex flex-row gap-4 font-nabla" style="--stagger: 1" data-animate>
         <a href="/blog" class={$page.url.pathname === '/blog' ? 'active' : 'inactive'}>
-            <p class="text-4xl font-semibold text-slate-50">Blog</p>
+            <p class="text-2xl sm:text-4xl font-semibold text-slate-50">Blog</p>
         </a>
         <a href="/notes" class={$page.url.pathname === '/notes' ? 'active' : 'inactive'}>
-            <p class="text-4xl font-semibold text-slate-50">Notes</p>
+            <p class="text-2xl sm:text-4xl font-semibold text-slate-50">Notes</p>
         </a>
     </div>
 
-    <div class="w-full max-w-[40rem] px-5 sm:px-0 flex flex-col mt-14 gap-16" style="--stagger: 2" data-animate>
+    <div class="w-full max-w-[40rem] px-5 sm:px-0 flex flex-col mt-8 sm:mt-14 gap-10 sm:gap-16" style="--stagger: 2" data-animate>
         {#each postsByYear as { year, posts }}
             <div class="flex flex-col gap-4">
-                <p class="text-4xl text-right font-nabla">{ year }</p>
+                <p class="text-2xl sm:text-4xl text-right font-nabla">{ year }</p>
                 <div class="flex flex-col gap-2">
                     {#each posts as { title, slug, author, date, published, readTime }}
                         <div class="text-right">
