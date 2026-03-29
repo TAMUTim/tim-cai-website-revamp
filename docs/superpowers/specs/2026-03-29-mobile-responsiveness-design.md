@@ -44,8 +44,10 @@ The `w-content` and `w-hundred` custom widths in `tailwind.config.js` can be rem
 - Panel has semi-transparent dark background (`bg-black/95`) to match site aesthetic
 - Links are full-width, left-aligned, with comfortable tap targets (padding `py-3`)
 - Tapping a link or tapping the hamburger again closes the panel
-- Close on navigation (when `$page.url.pathname` changes)
+- Close on navigation: use a `$effect` watching `$page.url.pathname` to set menu open state to `false` when the path changes
 - Above `sm`: current horizontal layout unchanged, hamburger hidden
+
+**Logo alignment fix:** The current logo container uses `justify-center sm:justify-start`, which centers the logo on mobile. With a hamburger icon on the right, the logo must be left-aligned at all sizes. Change to `justify-start` (remove the `justify-center` / `sm:justify-start` split).
 
 **Animation:** Simple CSS transition on max-height and opacity for the slide-down.
 
@@ -57,10 +59,10 @@ The `w-content` and `w-hundred` custom widths in `tailwind.config.js` can be rem
 
 **Solution:** In `ShaderBackground.svelte`, treat mobile the same as `prefers-reduced-motion` — set `fallback = true` when `isMobile` is detected, which shows the CSS gradient fallback instead of initializing WebGL.
 
-**Implementation:** The `isMobile` variable is already computed after the WebGL context is obtained. Add the mobile check right after the existing `prefers-reduced-motion` guard, before WebGL context creation:
+**Implementation:** The `isMobile` variable is currently computed after WebGL context creation. Move the mobile check before WebGL context creation and combine it with the `prefers-reduced-motion` guard to skip WebGL initialization entirely on mobile. Use `< 640` to match the `sm` breakpoint used throughout the rest of the mobile redesign (previously was `< 768`):
 
 ```typescript
-const isMobile = window.innerWidth < 768;
+const isMobile = window.innerWidth < 640;
 
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || isMobile) {
     fallback = true;
@@ -68,7 +70,7 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || isMobile) {
 }
 ```
 
-This combines both checks into a single guard, skipping WebGL initialization entirely on mobile.
+This aligns the shader cutoff with the `sm` (640px) breakpoint used by the hamburger nav and all other responsive changes, giving a consistent definition of "mobile" across the site. The `isMobile` variable used later for mouse tracking is no longer needed — if we reach that code, we're on desktop.
 
 **File affected:** `src/lib/components/ShaderBackground.svelte`
 
@@ -135,7 +137,7 @@ Body text (`text-lg`) stays as-is — 18px is readable on mobile.
 ## What Does NOT Change
 
 - All desktop layouts remain identical
-- Shader renders normally on desktop (only disabled on mobile < 768px)
+- Shader renders normally on desktop (only disabled on mobile < 640px, matching `sm` breakpoint)
 - Dark theme, CSS variables, accent colors unchanged
 - Animation system (`data-animate`, stagger) unchanged
 - Typography plugin prose styling unchanged
@@ -159,6 +161,8 @@ Verify:
 - Hamburger menu opens/closes correctly
 - Nav links navigate and close menu
 - Text is readable without zooming
-- Shader fallback (CSS gradient) shows on mobile
-- Shader renders normally on desktop
+- Shader fallback (CSS gradient) shows on mobile (< 640px)
+- Shader renders normally on desktop (>= 640px)
 - Blog/notes lists are left-aligned on mobile, right-aligned on desktop
+- Logo is left-aligned at all sizes (not centered on mobile)
+- Code blocks in blog posts don't overflow (scroll horizontally if needed)
