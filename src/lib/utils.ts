@@ -20,7 +20,7 @@ interface MdsvexModule {
     metadata: Record<string, unknown>;
 }
 
-type GlobImport = Record<string, () => Promise<MdsvexModule>>;
+type GlobImport = Record<string, () => Promise<unknown>>;
 
 export async function loadMarkdownContent<T>(
     glob: GlobImport,
@@ -33,7 +33,7 @@ export async function loadMarkdownContent<T>(
             const slug = extractSlug(path);
             if (!slug) return null;
 
-            const module = await resolver();
+            const module = await resolver() as MdsvexModule;
             const data = { slug, ...module.metadata };
             const parsed = schema.safeParse(data);
 
@@ -54,16 +54,16 @@ export async function loadMarkdownContent<T>(
 export async function resolveContentBySlug(
     glob: GlobImport,
     slug: string
-): Promise<{ component: Component<any>; frontmatter: Record<string, unknown> }> {
+): Promise<{ component: Component<any>; frontmatter: Record<string, string> }> {
     for (const [path, resolver] of Object.entries(glob)) {
         if (extractSlug(path) === slug) {
-            const module = await resolver();
+            const module = await resolver() as MdsvexModule;
             if (!module.metadata.published) {
                 throw error(404);
             }
             return {
                 component: module.default,
-                frontmatter: module.metadata
+                frontmatter: module.metadata as Record<string, string>
             };
         }
     }

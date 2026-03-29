@@ -13,7 +13,7 @@ const mdsvexOptions = {
 	extensions: ['.md'],
 	highlight: {
 		highlighter: async (code, lang = 'text') => {
-			const key = [...shikiLangs, ...shikiLangs].join('-');
+			const key = [...shikiThemes, ...shikiLangs].join('-');
 			let highlighter = highlighterCache.get(key);
 
 			if(!highlighter) {
@@ -25,7 +25,6 @@ const mdsvexOptions = {
 				highlighterCache.set(key, highlighter);
 			}
 
-			await highlighter.loadLanguage('javascript', 'typescript')
 			const html = escapeSvelte(highlighter.codeToHtml(code, { lang, theme: 'ayu-dark' }))
 			return `{@html \`${html}\` }`
 		}

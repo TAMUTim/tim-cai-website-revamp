@@ -15,12 +15,6 @@ declare global {
             notes: Note[];
         }
 
-        interface MdsvexFile {
-            default: import('svelte').Component<any>;
-            metadata: Record<string, string>;
-        }
-
-        type MdsvexResolver = () => Promise<MdsvexFile>;
     }
 }
 
