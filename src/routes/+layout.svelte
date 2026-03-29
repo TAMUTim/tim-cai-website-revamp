@@ -101,6 +101,7 @@
 <style>
 .nav-links a {
     color: var(--c-slate-50);
+    -webkit-text-fill-color: var(--c-slate-50);
     text-decoration: none;
     cursor: pointer;
     transition: opacity 0.2s ease-in-out;
