@@ -6,6 +6,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.font-nabla {
+    font-palette: --nabla-palette;
+    color: var(--c-slate-50);
+}
+
+@font-palette-values --nabla-palette {
+    font-family: "Nabla";
+    override-colors: 0 var(--c-slate-50, #f8fafc), 1 var(--c-slate-400, #94a3b8);
+}
+
 :root {
     --text-color: #E9ECEF;
     --c-bg: #020202;
