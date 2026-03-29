@@ -1,21 +1,15 @@
-import type {PageServerLoad} from "./$types";
+import type { PageServerLoad } from "./$types";
+import { loadMarkdownContent } from "$lib/utils";
+import { BlogPostSchema } from "$lib/schemas";
+import type { BlogPost } from "$lib/schemas";
 
-export const load: PageServerLoad = async({ url }) => {
-    const module = import.meta.glob('/src/lib/posts/*.md');
+export const load: PageServerLoad = async () => {
+    const glob = import.meta.glob('/src/lib/posts/*.md');
+    const posts = await loadMarkdownContent<BlogPost>(glob, BlogPostSchema);
 
-    const postPromises = Object.entries(module).map(([path, resolver]) =>
-        resolver().then(
-            (post) => ({
-                slug: path.match(/([\w-]+)\.(svelte\.md|md|svx)/i)?.[1] ?? null,
-                ...(post as unknown as App.MdsvexFile).metadata
-            } as App.BlogPost)
-        )
-    );
-
-    const posts = await Promise.all(postPromises);
-    const publishedPosts = posts.filter((post) => post.published)
-
-    publishedPosts.sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
+    const publishedPosts = posts
+        .filter((post) => post.published)
+        .sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
 
     return { posts: publishedPosts };
-}
+};
