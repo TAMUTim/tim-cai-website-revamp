@@ -95,3 +95,24 @@ html {
 [data-animation-controller='false'] [data-animate] {
     animation: none;
 }
+
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    padding: 0.5rem 1rem;
+    background: var(--c-accent);
+    color: var(--c-bg);
+    font-weight: 600;
+    z-index: 9999;
+    transition: top 0.2s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+button:focus-visible {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 2px;
+}

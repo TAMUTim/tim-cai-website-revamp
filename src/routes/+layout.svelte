@@ -48,6 +48,8 @@
 
 <svelte:window bind:scrollY={y} />
 
+<a href="#main-content" class="skip-link">Skip to content</a>
+
 {#if browser && renderDots}
     <Dots />
 {/if}
@@ -66,7 +68,7 @@
                 <a class="text-lg font-semibold mr-6" href="/projects">Projects</a>
                 <a class="text-lg font-semibold mr-6" href="/hundred">100</a>
                 <a class="text-lg font-semibold mr-6" href={Resume} target="_blank">Resume</a>
-                <a class="text-lg" target="_blank" href="https://github.com/TAMUTim">
+                <a class="text-lg" target="_blank" href="https://github.com/TAMUTim" aria-label="GitHub profile">
                     <i class="fa-brands fa-github"></i>
                 </a>
             </div>
@@ -74,10 +76,13 @@
     </div>
 </nav>
 
-{@render children()}
+<main id="main-content">
+    {@render children()}
+</main>
 
 <button
         title="Scroll to the top"
+        aria-label="Scroll to top"
         class="fixed right-3 bottom-3 w-10 h-10 rounded-full z-100 print:hidden text-slate-200 {y > 10 ? 'opacity-100' : 'opacity-0'}"
         onclick={scrollToTop}
 >
