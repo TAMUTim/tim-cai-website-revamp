@@ -10,5 +10,8 @@ export default defineConfig({
 			],
 		},
 	},
+	ssr: {
+		noExternal: ['p5']
+	},
 	plugins: [sveltekit()]
 });
