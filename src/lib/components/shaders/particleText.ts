@@ -2,12 +2,12 @@ import { compileShader, createProgram } from './webgl';
 
 // --- Tunable Constants ---
 
-export const SAMPLE_STEP = 3;
+export const SAMPLE_STEP = 1;
 export const SPRING_K = 0.08;
 export const DAMPING = 0.85;
 export const MOUSE_RADIUS = 80;
 export const MOUSE_STRENGTH = 8;
-export const POINT_SIZE = 2.0;
+export const POINT_SIZE = 3.0;
 
 // --- Text Sampling ---
 // Renders text to an offscreen Canvas 2D, reads back pixel data,
@@ -76,9 +76,8 @@ export interface ParticleSystem {
 
 export function createParticles(
 	homes: Array<{ x: number; y: number }>,
-	canvasWidth: number,
-	canvasHeight: number,
-	topMargin: number,
+	scatterWidth: number,
+	scatterHeight: number,
 ): ParticleSystem {
 	const count = homes.length;
 	const sys: ParticleSystem = {
@@ -94,10 +93,10 @@ export function createParticles(
 
 	for (let i = 0; i < count; i++) {
 		sys.homeX[i] = homes[i].x;
-		sys.homeY[i] = homes[i].y + topMargin;
+		sys.homeY[i] = homes[i].y;
 		// Start at random positions for entrance formation animation
-		sys.x[i] = Math.random() * canvasWidth;
-		sys.y[i] = Math.random() * canvasHeight;
+		sys.x[i] = Math.random() * scatterWidth;
+		sys.y[i] = Math.random() * scatterHeight;
 		sys.vx[i] = 0;
 		sys.vy[i] = 0;
 	}
@@ -109,11 +108,13 @@ export function updateParticles(
 	sys: ParticleSystem,
 	mouseX: number,
 	mouseY: number,
+	offsetX: number,
+	offsetY: number,
 ): void {
 	for (let i = 0; i < sys.count; i++) {
-		// Spring force toward home
-		sys.vx[i] += (sys.homeX[i] - sys.x[i]) * SPRING_K;
-		sys.vy[i] += (sys.homeY[i] - sys.y[i]) * SPRING_K;
+		// Spring force toward home (offset by placeholder position)
+		sys.vx[i] += (sys.homeX[i] + offsetX - sys.x[i]) * SPRING_K;
+		sys.vy[i] += (sys.homeY[i] + offsetY - sys.y[i]) * SPRING_K;
 
 		// Damping
 		sys.vx[i] *= DAMPING;
@@ -214,9 +215,6 @@ export function createRenderer(gl: WebGL2RenderingContext): ParticleRenderer {
 	return {
 		draw(positions, count, logicalWidth, logicalHeight, dpr) {
 			gl.viewport(0, 0, logicalWidth * dpr, logicalHeight * dpr);
-			gl.clearColor(0, 0, 0, 0);
-			gl.clear(gl.COLOR_BUFFER_BIT);
-
 			gl.useProgram(program);
 			gl.uniform2f(uResolution, logicalWidth, logicalHeight);
 			gl.uniform1f(uPointSize, POINT_SIZE * dpr);
@@ -230,6 +228,7 @@ export function createRenderer(gl: WebGL2RenderingContext): ParticleRenderer {
 			gl.bindVertexArray(vao);
 			gl.drawArrays(gl.POINTS, 0, count);
 			gl.bindVertexArray(null);
+			gl.disable(gl.BLEND);
 		},
 
 		destroy() {
