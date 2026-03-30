@@ -64,11 +64,11 @@
 {/if}
 
 <nav class="font-ibm z-10 sticky top-0 bg-black/80 backdrop-blur-sm">
-    <div class="mx-auto px-2 py-2 sm:px-6 lg:px-8">
+    <div class="mx-auto px-4 py-2 sm:px-6 lg:px-8">
         <div class="relative flex h-16 items-center justify-between">
             <div class="flex flex-1 items-center justify-start">
                 <a class="flex flex-shrink-0 items-center" href="/">
-                    <img class="h-10 w-auto" src={GoobImage} alt="really cool drawing of me">
+                    <img class="h-8 w-auto" src={GoobImage} alt="really cool drawing of me">
                 </a>
             </div>
             <button
@@ -91,7 +91,7 @@
                 </a>
             </div>
         </div>
-        <div id="mobile-menu" class="mobile-menu sm:hidden nav-links font-nabla border-t border-slate-800" class:open={menuOpen}>
+        <div id="mobile-menu" class="mobile-menu nav-links font-nabla" class:open={menuOpen}>
             <div class="flex flex-col py-2">
                 <a class="py-3 px-4 text-lg font-semibold" href="/blog">Blog</a>
                 <a class="py-3 px-4 text-lg font-semibold" href="/notes">Notes</a>
@@ -155,5 +155,12 @@
 
 .mobile-menu.open {
     grid-template-rows: 1fr;
+    border-top: 1px solid var(--c-accent);
+}
+
+@media (min-width: 640px) {
+    .mobile-menu {
+        display: none;
+    }
 }
 </style>
