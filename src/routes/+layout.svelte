@@ -2,6 +2,7 @@
     import '$lib/styles/main.css'
     import '@fortawesome/fontawesome-free/css/all.min.css'
     import { browser } from "$app/environment";
+
     import { navigating, page } from '$app/stores';
     import { animatedSections } from '$lib/stores/animatedSections.svelte';
 
@@ -90,20 +91,18 @@
                 </a>
             </div>
         </div>
-        {#if menuOpen}
-            <div id="mobile-menu" class="sm:hidden nav-links font-nabla border-t border-slate-800">
-                <div class="flex flex-col py-2">
-                    <a class="py-3 px-4 text-lg font-semibold" href="/blog">Blog</a>
-                    <a class="py-3 px-4 text-lg font-semibold" href="/notes">Notes</a>
-                    <a class="py-3 px-4 text-lg font-semibold" href="/projects">Projects</a>
-                    <a class="py-3 px-4 text-lg font-semibold" href="/hundred">100</a>
-                    <a class="py-3 px-4 text-lg font-semibold" href={Resume} target="_blank">Resume</a>
-                    <a class="py-3 px-4 text-lg" target="_blank" href="https://github.com/TAMUTim" aria-label="GitHub profile">
-                        <i class="fa-brands fa-github"></i> GitHub
-                    </a>
-                </div>
+        <div id="mobile-menu" class="mobile-menu sm:hidden nav-links font-nabla border-t border-slate-800" class:open={menuOpen}>
+            <div class="flex flex-col py-2">
+                <a class="py-3 px-4 text-lg font-semibold" href="/blog">Blog</a>
+                <a class="py-3 px-4 text-lg font-semibold" href="/notes">Notes</a>
+                <a class="py-3 px-4 text-lg font-semibold" href="/projects">Projects</a>
+                <a class="py-3 px-4 text-lg font-semibold" href="/hundred">100</a>
+                <a class="py-3 px-4 text-lg font-semibold" href={Resume} target="_blank">Resume</a>
+                <a class="py-3 px-4 text-lg" target="_blank" href="https://github.com/TAMUTim" aria-label="GitHub profile">
+                    <i class="fa-brands fa-github"></i> GitHub
+                </a>
             </div>
-        {/if}
+        </div>
     </div>
 </nav>
 
@@ -142,5 +141,19 @@
 .nav-links a:hover {
     opacity: 1;
     text-decoration-color: inherit;
+}
+
+.mobile-menu {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.2s ease-out;
+}
+
+.mobile-menu > div {
+    overflow: hidden;
+}
+
+.mobile-menu.open {
+    grid-template-rows: 1fr;
 }
 </style>
