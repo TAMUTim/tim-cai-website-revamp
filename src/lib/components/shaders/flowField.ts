@@ -251,10 +251,12 @@ export const createFlowField: ShaderFactory = (gl, width, height, isMobile) => {
 	// --- Initialize particle data ---
 	const STRIDE = 5 * 4 // 5 floats * 4 bytes = 20 bytes per particle
 	const data = new Float32Array(particleCount * 5)
+	const spawnMargin = 0.07
+	const spawnRange = 1.0 - 2.0 * spawnMargin
 	for (let i = 0; i < particleCount; i++) {
 		const o = i * 5
-		data[o] = Math.random() // x [0,1]
-		data[o + 1] = Math.random() // y [0,1]
+		data[o] = spawnMargin + Math.random() * spawnRange // x [0.07, 0.93]
+		data[o + 1] = spawnMargin + Math.random() * spawnRange // y [0.07, 0.93]
 		data[o + 2] = (Math.random() - 0.5) * 0.001 // vx
 		data[o + 3] = (Math.random() - 0.5) * 0.001 // vy
 		data[o + 4] = Math.random() * 0.5 + 0.5 // opacity
