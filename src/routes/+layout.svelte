@@ -84,7 +84,6 @@
                 <a class="text-lg font-semibold mr-6" href="/blog">Blog</a>
                 <a class="text-lg font-semibold mr-6" href="/notes">Notes</a>
                 <a class="text-lg font-semibold mr-6" href="/projects">Projects</a>
-                <a class="text-lg font-semibold mr-6" href="/hundred">100</a>
                 <a class="text-lg" target="_blank" href="https://github.com/TAMUTim" aria-label="GitHub profile">
                     <i class="fa-brands fa-github"></i>
                 </a>
@@ -95,7 +94,6 @@
                 <a class="py-3 px-4 text-lg font-semibold" href="/blog">Blog</a>
                 <a class="py-3 px-4 text-lg font-semibold" href="/notes">Notes</a>
                 <a class="py-3 px-4 text-lg font-semibold" href="/projects">Projects</a>
-                <a class="py-3 px-4 text-lg font-semibold" href="/hundred">100</a>
                 <a class="py-3 px-4 text-lg" target="_blank" href="https://github.com/TAMUTim" aria-label="GitHub profile">
                     <i class="fa-brands fa-github"></i> GitHub
                 </a>

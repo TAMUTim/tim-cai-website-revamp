@@ -20,13 +20,10 @@ SvelteKit personal website with file-based markdown content, WebGL2 background a
 
 Blog posts live in `src/lib/posts/*.md` and notes in `src/lib/notes/*.md`. Both use YAML frontmatter with a `published` boolean for filtering. Notes have an additional `topic` field for grouping. Content is loaded server-side via `import.meta.glob()` in `+page.server.ts` files.
 
-The "100 days" section (`src/lib/hundred/`) contains standalone Svelte components loaded dynamically, each with a `title` module-level export.
-
 ### Routing
 
 - `/blog/[slug]` and `/notes/[slug]` — dynamic content routes
-- `/projects`, `/hundred` — static pages
-- `/hundred/bloom` — example animation subpage
+- `/projects` — static page
 
 ### Key Components
 

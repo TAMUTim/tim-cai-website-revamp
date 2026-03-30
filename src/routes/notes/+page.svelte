@@ -35,7 +35,7 @@
     });
 </script>
 
-<div class="flex flex-col items-center justify-center font-ibm mt-6 sm:mt-10">
+<div class="flex flex-col items-center justify-center font-ibm mt-12 sm:mt-16">
     <div class="w-full max-w-[40rem] px-5 sm:px-0 flex flex-row gap-4 font-nabla" style="--stagger: 1" data-animate>
         <a href="/blog" class={$page.url.pathname === '/blog' ? 'active' : 'inactive'}>
             <p class="text-2xl sm:text-4xl font-semibold text-slate-50">Blog</p>
