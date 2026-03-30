@@ -11,8 +11,8 @@
 	<title>{title}</title>
 </svelte:head>
 
-<div class="flex flex-col items-center justify-center font-ibm mt-6 sm:mt-10">
-	<div class="w-full max-w-[40rem] px-5 sm:px-0">
+<div class="flex flex-col items-center justify-center font-ibm mt-18 sm:mt-24">
+	<div class="w-full max-w-[40rem] px-5 sm:px-0 mb-6">
 		<ParticleText />
 	</div>
 	<div class="w-full max-w-[40rem] px-5 sm:px-0" style="--stagger: 1" data-animate>

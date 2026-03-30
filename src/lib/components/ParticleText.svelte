@@ -49,7 +49,7 @@
 					const mouseX = uniforms.mouse[0];
 					const mouseY = uniforms.resolution[1] - uniforms.mouse[1];
 
-					updateParticles(particles, mouseX, mouseY, rect.left, rect.top);
+					updateParticles(particles, mouseX, mouseY, rect.left, rect.top - shaderBridge.canvasTop);
 					renderer.draw(
 						particles.positions,
 						particles.count,
