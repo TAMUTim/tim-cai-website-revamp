@@ -76,7 +76,7 @@
 
 {#if useWebGL}
 	<div bind:this={placeholder}>
-		<p class="text-[64px] font-semibold font-nabla text-transparent select-none" aria-hidden="true">Tim Cai</p>
+		<p class="text-[64px] leading-[0.9] font-semibold font-nabla text-transparent select-none" aria-hidden="true">Tim Cai</p>
 		<p class="sr-only">Tim Cai</p>
 	</div>
 {:else}

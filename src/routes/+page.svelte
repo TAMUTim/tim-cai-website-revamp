@@ -21,7 +21,7 @@
 			I'm a software engineer at Roblox, currently working on cool problems in Geometry!
 		</p>
 		<p class="mt-5 text-lg text-left text-slate-300">
-			Check out my thoughts <a href="/blog">here</a>, and my work <a href="/work">here</a>.
+			Check out my thoughts <a href="/blog">here</a>, and my work <a href="/projects">here</a>.
 		</p>
 	</div>
 	<div class="w-full max-w-[40rem] px-5 sm:px-0" style="--stagger: 2" data-animate>
