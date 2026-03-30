@@ -13,7 +13,7 @@
 
     // Assets
     import GoobImage from '$lib/assets/goob.png';
-    import Resume from '$lib/assets/tim_cai_resume.pdf';
+
     import GoobFavicon from '$lib/assets/favicons/favicon.ico';
 
     let { children } = $props();
@@ -85,7 +85,6 @@
                 <a class="text-lg font-semibold mr-6" href="/notes">Notes</a>
                 <a class="text-lg font-semibold mr-6" href="/projects">Projects</a>
                 <a class="text-lg font-semibold mr-6" href="/hundred">100</a>
-                <a class="text-lg font-semibold mr-6" href={Resume} target="_blank">Resume</a>
                 <a class="text-lg" target="_blank" href="https://github.com/TAMUTim" aria-label="GitHub profile">
                     <i class="fa-brands fa-github"></i>
                 </a>
@@ -97,7 +96,6 @@
                 <a class="py-3 px-4 text-lg font-semibold" href="/notes">Notes</a>
                 <a class="py-3 px-4 text-lg font-semibold" href="/projects">Projects</a>
                 <a class="py-3 px-4 text-lg font-semibold" href="/hundred">100</a>
-                <a class="py-3 px-4 text-lg font-semibold" href={Resume} target="_blank">Resume</a>
                 <a class="py-3 px-4 text-lg" target="_blank" href="https://github.com/TAMUTim" aria-label="GitHub profile">
                     <i class="fa-brands fa-github"></i> GitHub
                 </a>
