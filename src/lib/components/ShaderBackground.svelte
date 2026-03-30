@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import type { ShaderFactory, FrameUniforms } from './shaders/webgl';
+	import { shaderBridge } from '$lib/stores/shaderBridge.svelte';
 
 	interface Props {
 		createShader: ShaderFactory;
@@ -33,6 +34,7 @@
 		}
 
 		const glCtx = gl;
+		shaderBridge.gl = glCtx;
 
 		// Mouse tracking (desktop only)
 		let mouseX = -1;
@@ -88,12 +90,14 @@
 			};
 
 			shader.draw(uniforms);
+			shaderBridge.overlay?.draw(glCtx, uniforms);
 			animId = requestAnimationFrame(frame);
 		}
 
 		animId = requestAnimationFrame(frame);
 
 		return () => {
+			shaderBridge.gl = null;
 			cancelAnimationFrame(animId);
 			shader.destroy();
 			window.removeEventListener('mousemove', onMouseMove);
