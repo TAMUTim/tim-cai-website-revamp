@@ -35,26 +35,26 @@
     });
 </script>
 
-<div class="flex flex-col items-center justify-center font-ibm mt-10">
-    <div class="w-content flex flex-row gap-4 font-nabla" style="--stagger: 1" data-animate>
+<div class="flex flex-col items-center justify-center font-ibm mt-6 sm:mt-10">
+    <div class="w-full max-w-[40rem] px-5 sm:px-0 flex flex-row gap-4 font-nabla" style="--stagger: 1" data-animate>
         <a href="/blog" class={$page.url.pathname === '/blog' ? 'active' : 'inactive'}>
-            <p class="text-4xl font-semibold text-slate-50">Blog</p>
+            <p class="text-2xl sm:text-4xl font-semibold text-slate-50">Blog</p>
         </a>
         <a href="/notes" class={$page.url.pathname === '/notes' ? 'active' : 'inactive'}>
-            <p class="text-4xl font-semibold text-slate-50">Notes</p>
+            <p class="text-2xl sm:text-4xl font-semibold text-slate-50">Notes</p>
         </a>
     </div>
 
-    <div class="w-content flex flex-col mt-14 gap-16" style="--stagger: 2" data-animate>
+    <div class="w-full max-w-[40rem] px-5 sm:px-0 flex flex-col mt-8 sm:mt-14 gap-10 sm:gap-16" style="--stagger: 2" data-animate>
         {#each notesByYear as { topic, notes }}
             <div class="flex flex-col gap-4">
-                <p class="text-4xl font-nabla text-right">{ topic }</p>
+                <p class="text-2xl sm:text-4xl font-nabla text-left sm:text-right">{ topic }</p>
                 <div class="flex flex-col gap-2">
                     {#each notes as { title, slug, author, date, published, topic, readTime }}
-                        <div class="text-right">
+                        <div class="text-left sm:text-right">
                             <a href="/notes/{slug}" class="text-xl text-slate-300">
                                 {title}
-                                <span class="ml-3 text-right font-semibold text-xl text-slate-400 mt-2">{readTime} min</span>
+                                <span class="block sm:inline ml-0 sm:ml-3 text-right font-semibold text-base sm:text-xl text-slate-400 mt-1 sm:mt-2">{readTime} min</span>
                             </a>
                         </div>
                     {/each}

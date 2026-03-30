@@ -14,7 +14,9 @@
 	$effect(() => {
 		if (!browser || !canvas) return;
 
-		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+		const isMobile = window.innerWidth < 640;
+
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || isMobile) {
 			fallback = true;
 			return;
 		}
@@ -31,7 +33,6 @@
 		}
 
 		const glCtx = gl;
-		const isMobile = window.innerWidth < 768;
 
 		// Mouse tracking (desktop only)
 		let mouseX = -1;
@@ -47,10 +48,8 @@
 			mouseY = -1;
 		}
 
-		if (!isMobile) {
-			window.addEventListener('mousemove', onMouseMove);
-			window.addEventListener('mouseleave', onMouseLeave);
-		}
+		window.addEventListener('mousemove', onMouseMove);
+		window.addEventListener('mouseleave', onMouseLeave);
 
 		// Canvas sizing (no DPR — ambient effect doesn't need retina resolution)
 		let width = window.innerWidth;
@@ -97,10 +96,8 @@
 		return () => {
 			cancelAnimationFrame(animId);
 			shader.destroy();
-			if (!isMobile) {
-				window.removeEventListener('mousemove', onMouseMove);
-				window.removeEventListener('mouseleave', onMouseLeave);
-			}
+			window.removeEventListener('mousemove', onMouseMove);
+			window.removeEventListener('mouseleave', onMouseLeave);
 			window.removeEventListener('resize', onResize);
 		};
 	});
